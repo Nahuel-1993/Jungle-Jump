@@ -10,16 +10,6 @@ int main()
     Personaje alan;
 
 
-    sf::Sprite personaje;       //Declaro un sprite
-    sf::Texture personaje_text; //Declaro su textura
-
-
-
-
-
-
-
-
     //Game Loop (update del juego) *Se subdivide internamente*
 
     while (window.isOpen())
@@ -37,13 +27,14 @@ int main()
 
 
 
-
+        alan.cmd(); //Evaluamos los comandos
 
 
         // 3° Update - Actualiza los estados del juego
         //(Se puede manejar junto con CMD pero Brian prefiere separarlos)
 
-        alan.update();
+        alan.update(); //analiza el estado del personaje
+
 
 
         window.clear(); //Borra la pantalla para que no se superpongan objetos
