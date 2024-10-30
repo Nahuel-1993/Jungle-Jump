@@ -1,15 +1,20 @@
 #include <SFML/Graphics.hpp>
+#include <stdlib.h>
+#include <ctime>
 #include "Personaje.h"
 #include "Banana.h"
 
 int main()
 {
+    std::srand((unsigned)std::time(0));
+
     //Inicializacion de la ventana
     sf::RenderWindow window(sf::VideoMode(800, 600), "Jungle Jump");
     window.setFramerateLimit(60);
 
     Personaje alan;
     Banana banana;
+    banana.respawn();
 
     //Game Loop (update del juego) *Se subdivide internamente*
 
@@ -36,6 +41,9 @@ int main()
 
         alan.update(); //analiza el estado del personaje
 
+        if(alan.isCollision(banana)){
+            banana.respawn();
+        }
 
 
         window.clear(); //Borra la pantalla para que no se superpongan objetos
