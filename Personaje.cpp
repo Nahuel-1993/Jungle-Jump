@@ -2,41 +2,76 @@
 
 Personaje::Personaje()
 {
-    _velocity = {4,4}; //inicializo velocity para luego analizarla en update y cambiar la orientacion del personaje
+    //_velocity = {4,4}; //inicializo velocity para luego analizarla en update y cambiar la orientacion del personaje
     _texture.loadFromFile("alan.png");
     _sprite.setTexture(_texture);
     _sprite.setOrigin(_sprite.getGlobalBounds().width/2, _sprite.getGlobalBounds().height);
+    _sprite.setPosition(100, 500);
+    _estado = ESTADOS_PERSONAJE::QUIETO;
+    _velocidadSalto = 0;
 }
 
-void Personaje::update(){
+void Personaje::cmd(){
 
     //Para mover al personaje:
 
-        _velocity = {0,0};
+        //_velocity = {0,0};
 
-        if(sf::Keyboard::isKeyPressed(sf::Keyboard::Up)){
-            _velocity.y = -5;
-        }
-        if(sf::Keyboard::isKeyPressed(sf::Keyboard::Left)){
-            _velocity.x = -5;
-        }
-        if(sf::Keyboard::isKeyPressed(sf::Keyboard::Down)){
-            _velocity.y = 5;
-        }
-        if(sf::Keyboard::isKeyPressed(sf::Keyboard::Right)){
-            _velocity.x = 5;
+        //_estado = ESTADOS_PERSONAJE::QUIETO;
+
+
+
+        if(sf::Keyboard::isKeyPressed(sf::Keyboard::Up))
+        {
+            _estado = ESTADOS_PERSONAJE::SALTANDO;
+            _velocidadSalto = 10;
         }
 
-        _sprite.move(_velocity); //Velocity me dice hacia donde esta yendo el personaje
+
+        if(sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
+        {
+            _estado = ESTADOS_PERSONAJE::CAMINANDO_ADELANTE;
+        }
+
+        if(sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
+        {
+            _estado = ESTADOS_PERSONAJE::CAMINANDO_ATRAS;
+        }
+
+
+       // _sprite.move(_velocity); //Velocity me dice hacia donde esta yendo el personaje
+}
+void Personaje::update(){
+
+    switch(_estado){
+    case QUIETO:
+        //Aca programamos si hace algo estando quieto (respirar x ejemplo)
+        break;
+    case CAMINANDO_ADELANTE:
+        _sprite.move(5,0);
+        _estado = ESTADOS_PERSONAJE::QUIETO;
+        break;
+    case CAMINANDO_ATRAS:
+        _sprite.move(-5,0);
+        _estado = ESTADOS_PERSONAJE::QUIETO;
+        break;
+    case SALTANDO:
+        _velocidadSalto -= 2;
+        _sprite.move(0, -_velocidadSalto);
+        break;
+    default:
+        break;
+    }
 
     //Para orientar al personaje segun hacia que lado esta desplazandose:
-
+/*
         if(_velocity.x < 0){
             _sprite.setScale(-1,1);
         }
         else if(_velocity.x > 0){
             _sprite.setScale(1,1);
         }
+*/
     //Para evitar que salga de la pantalla:
 
         if(_sprite.getGlobalBounds().left < 0){                                         //Lo vuelvo a setear dentro de los limites
@@ -53,6 +88,8 @@ void Personaje::update(){
         }
 }
 
+
 void Personaje::draw(sf::RenderTarget& target, sf::RenderStates states) const {
     target.draw(_sprite, states);
 }
+

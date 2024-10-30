@@ -1,7 +1,8 @@
 # depslib dependency file v1.0
-1730161051 source:c:\users\nahue\onedrive\documentos\utn\materias\programacion\prog 2\tp final\jungle-jump\main.cpp
+1730299732 source:c:\users\nahue\onedrive\documentos\utn\materias\programacion\prog 2\tp final\jungle-jump\main.cpp
 	<SFML/Graphics.hpp>
 	"Personaje.h"
+	"Banana.h"
 
 1699047563 c:\users\nahue\onedrive\documentos\utn\materias\programacion\prog 2\tp final\jungle-jump\sfml-2.6.1\include\sfml\graphics.hpp
 	<SFML/Window.hpp>
@@ -421,9 +422,18 @@
 	<SFML/Graphics/Drawable.hpp>
 	<SFML/Window/GlResource.hpp>
 
-1730161051 c:\users\nahue\onedrive\documentos\utn\materias\programacion\prog 2\tp final\jungle-jump\personaje.h
+1730299921 c:\users\nahue\onedrive\documentos\utn\materias\programacion\prog 2\tp final\jungle-jump\personaje.h
 	<SFML\Graphics.hpp>
 
-1730161051 source:c:\users\nahue\onedrive\documentos\utn\materias\programacion\prog 2\tp final\jungle-jump\personaje.cpp
+1730299732 source:c:\users\nahue\onedrive\documentos\utn\materias\programacion\prog 2\tp final\jungle-jump\personaje.cpp
 	"Personaje.h"
+
+1730297811 source:c:\users\nahue\onedrive\documentos\utn\materias\programacion\prog 2\tp final\jungle-jump\frutas.cpp
+	"Frutas.h"
+
+1730297811 c:\users\nahue\onedrive\documentos\utn\materias\programacion\prog 2\tp final\jungle-jump\frutas.h
+	<SFML\Graphics.hpp>
+
+1730299752 c:\users\nahue\onedrive\documentos\utn\materias\programacion\prog 2\tp final\jungle-jump\banana.h
+	<SFML\Graphics.hpp>
 
