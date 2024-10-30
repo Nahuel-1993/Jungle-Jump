@@ -1,5 +1,6 @@
 #include <SFML/Graphics.hpp>
 #include "Personaje.h"
+#include "Banana.h"
 
 int main()
 {
@@ -8,7 +9,7 @@ int main()
     window.setFramerateLimit(60);
 
     Personaje alan;
-
+    Banana banana;
 
     //Game Loop (update del juego) *Se subdivide internamente*
 
@@ -44,7 +45,7 @@ int main()
 
 
         window.draw(alan);
-
+        window.draw(banana);
 
 
         // 5° Display - Flip

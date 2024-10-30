@@ -22,10 +22,8 @@ private:
 public:
 
 
-
     Personaje();
-    void cmd();
     void update();
     void draw(sf::RenderTarget& target, sf::RenderStates states) const override;
-
+    void cmd();
 };
