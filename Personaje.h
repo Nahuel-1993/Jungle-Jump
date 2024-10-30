@@ -1,5 +1,6 @@
 #pragma once
 #include <SFML\Graphics.hpp>
+#include "Collisionable.h"
 
     enum ESTADOS_PERSONAJE{
         QUIETO,
@@ -9,7 +10,7 @@
     };
 
 
-class Personaje: public sf::Drawable
+class Personaje: public sf::Drawable, public Collisionable
 {
 private:
 
@@ -26,4 +27,5 @@ public:
     void update();
     void draw(sf::RenderTarget& target, sf::RenderStates states) const override;
     void cmd();
+     sf::FloatRect getBounds() const override;
 };

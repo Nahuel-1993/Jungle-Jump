@@ -1,7 +1,8 @@
 #pragma once
 #include <SFML\Graphics.hpp>
+#include "Collisionable.h"
 
-class Banana: public sf::Drawable
+class Banana: public sf::Drawable, public Collisionable
 {
     private:
         sf::Sprite _sprite;
@@ -12,6 +13,7 @@ class Banana: public sf::Drawable
         void cmd();
         void update();
         void draw(sf::RenderTarget& target, sf::RenderStates states) const override;
-
+        void respawn();
+        sf::FloatRect getBounds() const override;
 };
 

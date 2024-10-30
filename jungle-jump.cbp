@@ -41,6 +41,8 @@
 			<Add library="sfml-system" />
 			<Add directory="SFML-2.6.1/lib" />
 		</Linker>
+		<Unit filename="Banana.cpp" />
+		<Unit filename="Banana.h" />
 		<Unit filename="Personaje.cpp" />
 		<Unit filename="Personaje.h" />
 		<Unit filename="main.cpp" />
