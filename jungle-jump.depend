@@ -1,7 +1,10 @@
 # depslib dependency file v1.0
-1730172282 source:c:\users\nahue\onedrive\documentos\utn\materias\programacion\prog 2\tp final\jungle-jump\main.cpp
+1730377425 source:c:\users\nahue\onedrive\documentos\utn\materias\programacion\prog 2\tp final\jungle-jump\main.cpp
 	<SFML/Graphics.hpp>
+	<stdlib.h>
+	<ctime>
 	"Personaje.h"
+	"Banana.h"
 
 1699047563 c:\users\nahue\onedrive\documentos\utn\materias\programacion\prog 2\tp final\jungle-jump\sfml-2.6.1\include\sfml\graphics.hpp
 	<SFML/Window.hpp>
@@ -421,9 +424,30 @@
 	<SFML/Graphics/Drawable.hpp>
 	<SFML/Window/GlResource.hpp>
 
-1730173070 c:\users\nahue\onedrive\documentos\utn\materias\programacion\prog 2\tp final\jungle-jump\personaje.h
+1730377426 c:\users\nahue\onedrive\documentos\utn\materias\programacion\prog 2\tp final\jungle-jump\personaje.h
+	<SFML\Graphics.hpp>
+	"Collisionable.h"
+
+1730377425 source:c:\users\nahue\onedrive\documentos\utn\materias\programacion\prog 2\tp final\jungle-jump\personaje.cpp
+	"Personaje.h"
+
+1730297811 source:c:\users\nahue\onedrive\documentos\utn\materias\programacion\prog 2\tp final\jungle-jump\frutas.cpp
+	"Frutas.h"
+
+1730297811 c:\users\nahue\onedrive\documentos\utn\materias\programacion\prog 2\tp final\jungle-jump\frutas.h
 	<SFML\Graphics.hpp>
 
-1730173070 source:c:\users\nahue\onedrive\documentos\utn\materias\programacion\prog 2\tp final\jungle-jump\personaje.cpp
-	"Personaje.h"
+1730377426 c:\users\nahue\onedrive\documentos\utn\materias\programacion\prog 2\tp final\jungle-jump\banana.h
+	<SFML\Graphics.hpp>
+	"Collisionable.h"
+
+1730327617 source:c:\users\nahue\onedrive\documentos\utn\materias\programacion\prog 2\tp final\jungle-jump\banana.cpp
+	<stdlib.h>
+	"Banana.h"
+
+1730327475 source:c:\users\nahue\onedrive\documentos\utn\materias\programacion\prog 2\tp final\jungle-jump\collisionable.cpp
+	"Collisionable.h"
+
+1730377426 c:\users\nahue\onedrive\documentos\utn\materias\programacion\prog 2\tp final\jungle-jump\collisionable.h
+	<SFML/Graphics.hpp>
 
