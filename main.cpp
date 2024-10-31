@@ -12,9 +12,18 @@ int main()
     sf::RenderWindow window(sf::VideoMode(800, 600), "Jungle Jump");
     window.setFramerateLimit(60);
 
+    sf::Font font;
+    font.loadFromFile("pixel.ttf"); //Cargamos la fuente para visualizar el puntaje
+    sf::Text text;
+
+    text.setFont(font);
+
     Personaje alan;
     Banana banana;
     banana.respawn();
+
+    int puntos = 0;
+
 
     //Game Loop (update del juego) *Se subdivide internamente*
 
@@ -22,6 +31,7 @@ int main()
     {
         // 1° Read input - Actualiza los estados de los perifericos de entrada. ↓
         //Leer la cola de mensajes
+
         sf::Event event;
         while (window.pollEvent(event))
         {
@@ -41,9 +51,12 @@ int main()
 
         alan.update(); //analiza el estado del personaje
 
-        if(alan.isCollision(banana)){
+        if(alan.isCollision(banana)){ //Si los obj colisionan hace un respawn del objeto recolectado
             banana.respawn();
+            puntos += 50;
         }
+
+        text.setString(std::to_string(puntos)); //Como los punto no son string, los convierto
 
 
         window.clear(); //Borra la pantalla para que no se superpongan objetos
@@ -51,9 +64,9 @@ int main()
 
         // 4° DRAW (muestra en la pantalla lo que hace update)
 
-
         window.draw(alan);
         window.draw(banana);
+        window.draw(text);
 
 
         // 5° Display - Flip

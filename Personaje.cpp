@@ -94,5 +94,6 @@ void Personaje::draw(sf::RenderTarget& target, sf::RenderStates states) const {
 }
 
  sf::FloatRect Personaje::getBounds() const {
-    return _sprite.getGlobalBounds();
+    return _sprite.getGlobalBounds(); //Hacemos un get de globalBounds porque devuelve un FloatRect que es lo
+                                      //que necesita getBounds()
  }
