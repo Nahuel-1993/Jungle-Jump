@@ -4,10 +4,52 @@
 #include <ctime>
 #include "Personaje.h"
 #include "Banana.h"
+#include <iostream>
+#include "rlutil.h" ///Librería para mejoreas del menú
 
 int main()
 {
     std::srand((unsigned)std::time(0));
+
+    int op=1, y =0;
+    rlutil::setBackgroundColor(rlutil::GREEN); ///CAMBIAMOS EL COLOR DE FONDO DE LA CONSOLA
+    rlutil::hidecursor(); ///Ocultamos el cursor para que no se vea al lado
+    do{
+            rlutil::cls(); ///Limpia la pantalla cada vez que se elije una opción
+            rlutil::locate(48,9); ///Ubicamos el texto en el medio de la pantalla
+            std::cout<<"----------------------"<<std::endl;
+            rlutil::locate(55,10);
+            std::cout<<"JUGAR " << std::endl;
+            rlutil::locate(55,11);
+            std::cout<<"ESTADISTICA " << std::endl;
+            rlutil::locate(55,12);
+            std::cout<<"CREDITOS " << std::endl;
+            rlutil::locate(55,14);
+            std::cout<<"SALIR " << std::endl;
+            rlutil::locate(48,15);
+            std::cout<<"----------------------"<<std::endl;
+            rlutil::locate(53,10 + y);
+            std::cout << (char)158 << std::endl;
+
+            switch (rlutil::getkey()){
+
+                case 14: ///Arriba
+                    y--;
+                    if (y<0){ y = 0;}
+                    break;
+                case 15: ///Abajo
+                    y++;
+                    if(y>4){ y =4; }///Con esto evitamos que sevaya más abajo de las opciones
+                    break;
+                case 1: ///Enter
+                    break;
+                default:
+                    break;
+            }
+            /*std::cout<< "key: "<<key;
+            rlutil::anykey();*/
+
+    } while (op != 0);
 
     //Inicializacion de la ventana
     sf::RenderWindow window(sf::VideoMode(800, 600), "Jungle Jump");
