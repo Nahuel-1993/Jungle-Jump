@@ -1,4 +1,5 @@
 #include <SFML/Graphics.hpp>
+#include <SFML/Audio.hpp>
 #include <stdlib.h>
 #include <ctime>
 #include "Personaje.h"
@@ -14,9 +15,20 @@ int main()
 
     sf::Font font;
     font.loadFromFile("pixel.ttf"); //Cargamos la fuente para visualizar el puntaje
-    sf::Text text;
 
-    text.setFont(font);
+    // Configuro texto
+    sf::Text text;
+    text.setFont(font); //Cargo la fuente
+    text.setCharacterSize(24); // Tamaño del texto
+    text.setFillColor(sf::Color::White); // Color del texto
+    text.setPosition(10, 10); // Posición del texto en la pantalla
+
+    sf::SoundBuffer buffer;
+    buffer.loadFromFile("bite.wav"); //Cargamos un efecto de sonido para la colision
+
+    sf::Sound sound; //Es el canal por donde vamos a reproducir el audio
+    sound.setBuffer(buffer);
+
 
     Personaje alan;
     Banana banana;
@@ -54,6 +66,7 @@ int main()
         if(alan.isCollision(banana)){ //Si los obj colisionan hace un respawn del objeto recolectado
             banana.respawn();
             puntos += 50;
+            sound.play();
         }
 
         text.setString(std::to_string(puntos)); //Como los punto no son string, los convierto
