@@ -5,24 +5,33 @@
 #include "Personaje.h"
 #include "Banana.h"
 #include <iostream>
-#include "rlutil.h"
+#include "rlutil.h" ///Librería para mejoreas del menú
 
 int main()
 {
     std::srand((unsigned)std::time(0));
 
     int op;
-    rlutil::setBackgroundColor(rlutil::GREEN);
-    do{
-            rlutil::cls();
+    rlutil::setBackgroundColor(rlutil::GREEN); ///CAMBIAMOS EL COLOR DE FONDO DE LA CONSOLA
 
+    do{
+            rlutil::cls(); ///Limpia la pantalla cada vez que se elije una opción
+            rlutil::locate(45,9); ///Ubicamos el texto en el medio de la pantalla
             std::cout<<"------------------------------"<<std::endl;
-            std::cout<<"   1- JUGAR " << std::endl;
-            std::cout<<"   1- JUGAR " << std::endl;
-            std::cout<<"   1- JUGAR " << std::endl;
+            rlutil::locate(45,10);
+            std::cout<<"    JUGAR " << std::endl;
+            rlutil::locate(45,11);
+            std::cout<<"    ESTADISTICA " << std::endl;
+            rlutil::locate(45,12);
+            std::cout<<"    CREDITOS " << std::endl;
+            rlutil::locate(45,13);
             std::cout<<"------------------------------"<<std::endl;
-            std::cout<<"   SALIR " << std::endl;
+            rlutil::locate(45,14);
+            std::cout<<"    SALIR " << std::endl;
+            rlutil::locate(45,15);
             std::cout<<"------------------------------"<<std::endl;
+            rlutil::locate(45,16);
+            std::cout << (char)158 << std::endl;
             std::cin >> op;
             //std::system("pause");
             //std::system("cls");
