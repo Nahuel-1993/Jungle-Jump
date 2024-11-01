@@ -11,58 +11,66 @@ Personaje::Personaje()
     _velocidadSalto = 0;
 }
 
-void Personaje::cmd(){
 
-    //Para mover al personaje:
+void Personaje::cmd() {
+    _estado = ESTADOS_PERSONAJE::QUIETO; // Estado predeterminado
+    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up) && sf::Keyboard::isKeyPressed(sf::Keyboard::Right)) {
+        _estado = ESTADOS_PERSONAJE::SALTANDO_ADELANTE;
+        _velocidadSalto = 10;
 
-        //_velocity = {0,0};
+    } else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up) && sf::Keyboard::isKeyPressed(sf::Keyboard::Left)) {
+        _estado = ESTADOS_PERSONAJE::SALTANDO_ATRAS;
+        _velocidadSalto = 10;
 
-        //_estado = ESTADOS_PERSONAJE::QUIETO;
+    } else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up)) {
+        _estado = ESTADOS_PERSONAJE::SALTANDO;
+        _velocidadSalto = 10;
 
+    } else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right)) {
+        _estado = ESTADOS_PERSONAJE::CAMINANDO_ADELANTE;
 
-
-        if(sf::Keyboard::isKeyPressed(sf::Keyboard::Up))
-        {
-            _estado = ESTADOS_PERSONAJE::SALTANDO;
-            _velocidadSalto = 10;
-        }
-
-
-        if(sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
-        {
-            _estado = ESTADOS_PERSONAJE::CAMINANDO_ADELANTE;
-        }
-
-        if(sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
-        {
-            _estado = ESTADOS_PERSONAJE::CAMINANDO_ATRAS;
-        }
-
-
-       // _sprite.move(_velocity); //Velocity me dice hacia donde esta yendo el personaje
+    } else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left)) {
+        _estado = ESTADOS_PERSONAJE::CAMINANDO_ATRAS;
+    }
 }
-void Personaje::update(){
 
-    switch(_estado){
-    case QUIETO:
-        //Aca programamos si hace algo estando quieto (respirar x ejemplo)
-        break;
-    case CAMINANDO_ADELANTE:
-        _sprite.move(5,0);
-        _sprite.setScale(1,1);
-        _estado = ESTADOS_PERSONAJE::QUIETO;
-        break;
-    case CAMINANDO_ATRAS:
-        _sprite.move(-5,0);
-        _sprite.setScale(-1,1);
-        _estado = ESTADOS_PERSONAJE::QUIETO;
-        break;
-    case SALTANDO:
-        _velocidadSalto -= 2;
-        _sprite.move(0, -_velocidadSalto);
-        break;
-    default:
-        break;
+void Personaje::update() {
+    switch (_estado) {
+        case QUIETO:
+            // Aca programamos si hace algo estando quieto (respirar x ejemplo)
+            break;
+
+        case CAMINANDO_ADELANTE:
+            _sprite.move(5, 0);
+            _sprite.setScale(1, 1);
+            _estado = ESTADOS_PERSONAJE::QUIETO;
+            break;
+
+        case CAMINANDO_ATRAS:
+            _sprite.move(-5, 0);
+            _sprite.setScale(-1, 1);
+            _estado = ESTADOS_PERSONAJE::QUIETO;
+            break;
+
+        case SALTANDO:
+            _velocidadSalto -= 2;
+            _sprite.move(0, -_velocidadSalto);
+            break;
+
+        case SALTANDO_ADELANTE:
+            _velocidadSalto -= 2;
+            _sprite.move(5, -_velocidadSalto);
+            _sprite.setScale(1, 1);
+            break;
+
+        case SALTANDO_ATRAS:
+            _velocidadSalto -= 2;
+            _sprite.move(-5, -_velocidadSalto);
+            _sprite.setScale(-1, 1);
+            break;
+
+        default:
+            break;
     }
 
 

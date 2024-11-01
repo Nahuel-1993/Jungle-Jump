@@ -6,7 +6,9 @@
         QUIETO,
         CAMINANDO_ADELANTE,
         CAMINANDO_ATRAS,
-        SALTANDO
+        SALTANDO,
+        SALTANDO_ADELANTE,
+        SALTANDO_ATRAS
     };
 
 
