@@ -5,6 +5,7 @@
 #include "Personaje.h"
 #include "Banana.h"
 #include <iostream>
+#include "Menu.h"
 #include "rlutil.h" ///Librería para mejoreas del menú
 
 int main()
@@ -17,6 +18,7 @@ int main()
     do{
             ///Debería comentarlo para que no titlé la pantalla cuando muevo el cursor, pero cuando lo hago se sale lo verde
             rlutil::cls(); ///Limpia la pantalla cada vez que se elije una opción
+            rlutil::setBackgroundColor(rlutil::GREEN); ///CAMBIAMOS EL COLOR DE FONDO DE LA CONSOLA
 
             rlutil::locate(48,9); ///Ubicamos el texto en el medio de la pantalla
             std::cout<<"----------------------"<<std::endl;
