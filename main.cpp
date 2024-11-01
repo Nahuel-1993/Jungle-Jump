@@ -10,7 +10,7 @@
 int main()
 {
     std::srand((unsigned)std::time(0));
-
+/*
     int op;
     rlutil::setBackgroundColor(rlutil::GREEN); ///CAMBIAMOS EL COLOR DE FONDO DE LA CONSOLA
 
@@ -36,6 +36,7 @@ int main()
             //std::system("pause");
             //std::system("cls");
     } while (op != 0);
+*/
 
     //Inicializacion de la ventana
     sf::RenderWindow window(sf::VideoMode(800, 600), "Jungle Jump");
@@ -98,6 +99,7 @@ int main()
         //(Se puede manejar junto con CMD pero Brian prefiere separarlos)
 
         alan.update(); //analiza el estado del personaje
+        banana.update();
 
         if(alan.isCollision(banana)){ //Si los obj colisionan hace un respawn del objeto recolectado
             banana.respawn();

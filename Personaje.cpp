@@ -65,7 +65,7 @@ void Personaje::update() {
         case SALTANDO:
             _velocidadSalto -= 0.5;
             _sprite.move(0, -_velocidadSalto);
-            if (_sprite.getPosition().y >= 600) { // Asumiendo que 500 es el suelo
+            if (_sprite.getPosition().y >= 600) {
                 _sprite.setPosition(_sprite.getPosition().x, 600);
                 _estado = ESTADOS_PERSONAJE::QUIETO;
                 _velocidadSalto = 0;
@@ -75,7 +75,7 @@ void Personaje::update() {
             _velocidadSalto -= 0.5;
             _sprite.move(5, -_velocidadSalto);
             _sprite.setScale(1, 1);
-            if (_sprite.getPosition().y >= 600) { // Asumiendo que 500 es el suelo
+            if (_sprite.getPosition().y >= 600) {
                 _sprite.setPosition(_sprite.getPosition().x, 600);
                 _estado = ESTADOS_PERSONAJE::QUIETO;
                 _velocidadSalto = 0;
@@ -85,7 +85,7 @@ void Personaje::update() {
             _velocidadSalto -= 0.5;
             _sprite.move(-5, -_velocidadSalto);
             _sprite.setScale(-1, 1);
-            if (_sprite.getPosition().y >= 600) { // Asumiendo que 500 es el suelo
+            if (_sprite.getPosition().y >= 600) {
                 _sprite.setPosition(_sprite.getPosition().x, 600);
                 _estado = ESTADOS_PERSONAJE::QUIETO;
                 _velocidadSalto = 0;
