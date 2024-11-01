@@ -4,10 +4,29 @@
 #include <ctime>
 #include "Personaje.h"
 #include "Banana.h"
+#include <iostream>
+#include "rlutil.h"
 
 int main()
 {
     std::srand((unsigned)std::time(0));
+
+    int op;
+    rlutil::setBackgroundColor(rlutil::GREEN);
+    do{
+            rlutil::cls();
+
+            std::cout<<"------------------------------"<<std::endl;
+            std::cout<<"   1- JUGAR " << std::endl;
+            std::cout<<"   1- JUGAR " << std::endl;
+            std::cout<<"   1- JUGAR " << std::endl;
+            std::cout<<"------------------------------"<<std::endl;
+            std::cout<<"   SALIR " << std::endl;
+            std::cout<<"------------------------------"<<std::endl;
+            std::cin >> op;
+            //std::system("pause");
+            //std::system("cls");
+    } while (op != 0);
 
     //Inicializacion de la ventana
     sf::RenderWindow window(sf::VideoMode(800, 600), "Jungle Jump");
