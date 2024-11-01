@@ -13,42 +13,41 @@ Personaje::Personaje()
 
 
 void Personaje::cmd() {
-    _estado = ESTADOS_PERSONAJE::QUIETO; // Estado predeterminado
-    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up) && sf::Keyboard::isKeyPressed(sf::Keyboard::Right)) {
-        _estado = ESTADOS_PERSONAJE::SALTANDO_ADELANTE;
-        _velocidadSalto = 10;
-
-    } else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up) && sf::Keyboard::isKeyPressed(sf::Keyboard::Left)) {
-        _estado = ESTADOS_PERSONAJE::SALTANDO_ATRAS;
-        _velocidadSalto = 10;
-
-    } else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up)) {
-        _estado = ESTADOS_PERSONAJE::SALTANDO;
-        _velocidadSalto = 10;
-
-    } else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right)) {
-        _estado = ESTADOS_PERSONAJE::CAMINANDO_ADELANTE;
-
-    } else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left)) {
-        _estado = ESTADOS_PERSONAJE::CAMINANDO_ATRAS;
+    if (_estado != ESTADOS_PERSONAJE::SALTANDO && _estado != ESTADOS_PERSONAJE::SALTANDO_ADELANTE && _estado != ESTADOS_PERSONAJE::SALTANDO_ATRAS) {
+        _estado = ESTADOS_PERSONAJE::QUIETO; // Estado predeterminado
+        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up) && sf::Keyboard::isKeyPressed(sf::Keyboard::Right)) {
+            _estado = ESTADOS_PERSONAJE::SALTANDO_ADELANTE;
+            _velocidadSalto = 10;
+        } else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up) && sf::Keyboard::isKeyPressed(sf::Keyboard::Left)) {
+            _estado = ESTADOS_PERSONAJE::SALTANDO_ATRAS;
+            _velocidadSalto = 10;
+        } else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up)) {
+            _estado = ESTADOS_PERSONAJE::SALTANDO;
+            _velocidadSalto = 10;
+        } else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right)) {
+            _estado = ESTADOS_PERSONAJE::CAMINANDO_ADELANTE;
+        } else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left)) {
+            _estado = ESTADOS_PERSONAJE::CAMINANDO_ATRAS;
+        }
     }
 }
+
 
 void Personaje::update() {
     switch (_estado) {
         case QUIETO:
-            _velocidadSalto -= 0.5; // Aplicando gravedad constante
+            _velocidadSalto -= 0.5; // Aplicando gravedad
             _sprite.move(0, -_velocidadSalto);
-            if (_sprite.getPosition().y >= 600) { // Asumiendo que 500 es el suelo
+            if (_sprite.getPosition().y >= 600) {
                 _sprite.setPosition(_sprite.getPosition().x, 600);
                 _velocidadSalto = 0;
             }
             break;
         case CAMINANDO_ADELANTE:
-            _velocidadSalto -= 0.5; // Aplicando gravedad constante
+            _velocidadSalto -= 0.5;
             _sprite.move(5, 0);
             _sprite.setScale(1, 1);
-            if (_sprite.getPosition().y >= 600) { // Asumiendo que 500 es el suelo
+            if (_sprite.getPosition().y >= 600) {
                 _sprite.setPosition(_sprite.getPosition().x, 600);
                 _estado = ESTADOS_PERSONAJE::QUIETO;
                 _velocidadSalto = 0;
@@ -57,7 +56,7 @@ void Personaje::update() {
         case CAMINANDO_ATRAS:
             _sprite.move(-5, 0);
             _sprite.setScale(-1, 1);
-            if (_sprite.getPosition().y >= 600) { // Asumiendo que 500 es el suelo
+            if (_sprite.getPosition().y >= 600) {
                 _sprite.setPosition(_sprite.getPosition().x, 600);
                 _estado = ESTADOS_PERSONAJE::QUIETO;
                 _velocidadSalto = 0;
