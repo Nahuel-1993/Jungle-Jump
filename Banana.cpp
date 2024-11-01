@@ -9,15 +9,18 @@ Banana::Banana() {
 }
 
 void Banana::update() {
-    // Implementación de la función update
+    _sprite.move(0, 2);
+    if (_sprite.getPosition().y >= 600) {
+        _sprite.setPosition(_sprite.getPosition().x, 600);
+    }
 }
 
 void Banana::draw(sf::RenderTarget& target, sf::RenderStates states) const {
     target.draw(_sprite, states);
 }
 
-void Banana::respawn(){
-    _sprite.setPosition(std::rand()%700 + _sprite.getGlobalBounds().width,std::rand()%500 + _sprite.getGlobalBounds().width);
+void Banana::respawn() {
+    _sprite.setPosition(std::rand() % 700 + _sprite.getGlobalBounds().width, std::rand() % 500 + _sprite.getGlobalBounds().width);
 }
 
 sf::FloatRect Banana::getBounds() const {
