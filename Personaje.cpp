@@ -37,57 +37,78 @@ void Personaje::cmd() {
 void Personaje::update() {
     switch (_estado) {
         case QUIETO:
-            // Aca programamos si hace algo estando quieto (respirar x ejemplo)
+            _velocidadSalto -= 0.5; // Aplicando gravedad constante
+            _sprite.move(0, -_velocidadSalto);
+            if (_sprite.getPosition().y >= 600) { // Asumiendo que 500 es el suelo
+                _sprite.setPosition(_sprite.getPosition().x, 600);
+                _velocidadSalto = 0;
+            }
             break;
-
         case CAMINANDO_ADELANTE:
+            _velocidadSalto -= 0.5; // Aplicando gravedad constante
             _sprite.move(5, 0);
             _sprite.setScale(1, 1);
-            _estado = ESTADOS_PERSONAJE::QUIETO;
+            if (_sprite.getPosition().y >= 600) { // Asumiendo que 500 es el suelo
+                _sprite.setPosition(_sprite.getPosition().x, 600);
+                _estado = ESTADOS_PERSONAJE::QUIETO;
+                _velocidadSalto = 0;
+            }
             break;
-
         case CAMINANDO_ATRAS:
             _sprite.move(-5, 0);
             _sprite.setScale(-1, 1);
-            _estado = ESTADOS_PERSONAJE::QUIETO;
+            if (_sprite.getPosition().y >= 600) { // Asumiendo que 500 es el suelo
+                _sprite.setPosition(_sprite.getPosition().x, 600);
+                _estado = ESTADOS_PERSONAJE::QUIETO;
+                _velocidadSalto = 0;
+            }
             break;
-
         case SALTANDO:
-            _velocidadSalto -= 2;
+            _velocidadSalto -= 0.5;
             _sprite.move(0, -_velocidadSalto);
+            if (_sprite.getPosition().y >= 600) { // Asumiendo que 500 es el suelo
+                _sprite.setPosition(_sprite.getPosition().x, 600);
+                _estado = ESTADOS_PERSONAJE::QUIETO;
+                _velocidadSalto = 0;
+            }
             break;
-
         case SALTANDO_ADELANTE:
-            _velocidadSalto -= 2;
+            _velocidadSalto -= 0.5;
             _sprite.move(5, -_velocidadSalto);
             _sprite.setScale(1, 1);
+            if (_sprite.getPosition().y >= 600) { // Asumiendo que 500 es el suelo
+                _sprite.setPosition(_sprite.getPosition().x, 600);
+                _estado = ESTADOS_PERSONAJE::QUIETO;
+                _velocidadSalto = 0;
+            }
             break;
-
         case SALTANDO_ATRAS:
-            _velocidadSalto -= 2;
+            _velocidadSalto -= 0.5;
             _sprite.move(-5, -_velocidadSalto);
             _sprite.setScale(-1, 1);
+            if (_sprite.getPosition().y >= 600) { // Asumiendo que 500 es el suelo
+                _sprite.setPosition(_sprite.getPosition().x, 600);
+                _estado = ESTADOS_PERSONAJE::QUIETO;
+                _velocidadSalto = 0;
+            }
             break;
-
         default:
             break;
     }
 
-
     //Para evitar que salga de la pantalla:
-
-        if(_sprite.getGlobalBounds().left < 0){                                         //Lo vuelvo a setear dentro de los limites
-           _sprite.setPosition(_sprite.getOrigin().x, _sprite.getPosition().y);       // y lo dejo igual con el get de y.
-        }
-        if(_sprite.getGlobalBounds().top < 0){
-           _sprite.setPosition(_sprite.getPosition().x, _sprite.getOrigin().y);
-        }
-        if(_sprite.getGlobalBounds().left + _sprite.getGlobalBounds().width > 800){
-           _sprite.setPosition(800 - (_sprite.getGlobalBounds().width - _sprite.getOrigin().x), _sprite.getPosition().y);
-        }
-        if(_sprite.getGlobalBounds().top + _sprite.getGlobalBounds().height > 600){
-           _sprite.setPosition(_sprite.getPosition().x, 600 + (_sprite.getGlobalBounds().height - _sprite.getOrigin().y));
-        }
+    if (_sprite.getGlobalBounds().left < 0) {
+        _sprite.setPosition(_sprite.getOrigin().x, _sprite.getPosition().y);
+    }
+    if (_sprite.getGlobalBounds().top < 0) {
+        _sprite.setPosition(_sprite.getPosition().x, _sprite.getOrigin().y);
+    }
+    if (_sprite.getGlobalBounds().left + _sprite.getGlobalBounds().width > 800) {
+        _sprite.setPosition(800 - (_sprite.getGlobalBounds().width - _sprite.getOrigin().x), _sprite.getPosition().y);
+    }
+    if (_sprite.getGlobalBounds().top + _sprite.getGlobalBounds().height > 600) {
+        _sprite.setPosition(_sprite.getPosition().x, 600 + (_sprite.getGlobalBounds().height - _sprite.getOrigin().y));
+    }
 }
 
 
