@@ -43,6 +43,8 @@
 		</Linker>
 		<Unit filename="Banana.cpp" />
 		<Unit filename="Banana.h" />
+		<Unit filename="Collisionable.cpp" />
+		<Unit filename="Collisionable.h" />
 		<Unit filename="Personaje.cpp" />
 		<Unit filename="Personaje.h" />
 		<Unit filename="main.cpp" />

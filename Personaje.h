@@ -10,7 +10,7 @@
     };
 
 
-class Personaje: public sf::Drawable, public Collisionable
+class Personaje: public sf::Drawable, public Collisionable //Sabe colisionar
 {
 private:
 
@@ -27,5 +27,5 @@ public:
     void update();
     void draw(sf::RenderTarget& target, sf::RenderStates states) const override;
     void cmd();
-     sf::FloatRect getBounds() const override;
+    sf::FloatRect getBounds() const override; //Sabe como es su rectangulo para colisionar
 };
