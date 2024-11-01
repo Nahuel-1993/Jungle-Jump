@@ -49,10 +49,12 @@ void Personaje::update(){
         break;
     case CAMINANDO_ADELANTE:
         _sprite.move(5,0);
+        _sprite.setScale(1,1);
         _estado = ESTADOS_PERSONAJE::QUIETO;
         break;
     case CAMINANDO_ATRAS:
         _sprite.move(-5,0);
+        _sprite.setScale(-1,1);
         _estado = ESTADOS_PERSONAJE::QUIETO;
         break;
     case SALTANDO:
@@ -63,15 +65,7 @@ void Personaje::update(){
         break;
     }
 
-    //Para orientar al personaje segun hacia que lado esta desplazandose:
-/*
-        if(_velocity.x < 0){
-            _sprite.setScale(-1,1);
-        }
-        else if(_velocity.x > 0){
-            _sprite.setScale(1,1);
-        }
-*/
+
     //Para evitar que salga de la pantalla:
 
         if(_sprite.getGlobalBounds().left < 0){                                         //Lo vuelvo a setear dentro de los limites
@@ -95,5 +89,4 @@ void Personaje::draw(sf::RenderTarget& target, sf::RenderStates states) const {
 
  sf::FloatRect Personaje::getBounds() const {
     return _sprite.getGlobalBounds(); //Hacemos un get de globalBounds porque devuelve un FloatRect que es lo
-                                      //que necesita getBounds()
- }
+}                                     //que necesita getBounds()

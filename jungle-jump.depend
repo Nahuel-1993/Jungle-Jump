@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1730422696 source:c:\users\nahue\onedrive\documentos\utn\materias\programacion\prog 2\tp final\jungle-jump\main.cpp
+1730466365 source:c:\users\nahue\onedrive\documentos\utn\materias\programacion\prog 2\tp final\jungle-jump\main.cpp
 	<SFML/Graphics.hpp>
 	<SFML/Audio.hpp>
 	<stdlib.h>
@@ -429,7 +429,7 @@
 	<SFML\Graphics.hpp>
 	"Collisionable.h"
 
-1730380207 source:c:\users\nahue\onedrive\documentos\utn\materias\programacion\prog 2\tp final\jungle-jump\personaje.cpp
+1730466742 source:c:\users\nahue\onedrive\documentos\utn\materias\programacion\prog 2\tp final\jungle-jump\personaje.cpp
 	"Personaje.h"
 
 1730297811 source:c:\users\nahue\onedrive\documentos\utn\materias\programacion\prog 2\tp final\jungle-jump\frutas.cpp
