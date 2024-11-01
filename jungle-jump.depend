@@ -995,13 +995,15 @@
 	<SFML\Graphics.hpp>
 	"Collisionable.h"
 
-1730425339 source:c:\users\ccfrgp\documents\github\jungle-jump\main.cpp
+1730485199 source:c:\users\ccfrgp\documents\github\jungle-jump\main.cpp
 	<SFML/Graphics.hpp>
 	<SFML/Audio.hpp>
 	<stdlib.h>
 	<ctime>
 	"Personaje.h"
 	"Banana.h"
+	<iostream>
+	"rlutil.h"
 
 1730412134 c:\users\ccfrgp\documents\github\jungle-jump\sfml-2.6.1\include\sfml\audio.hpp
 	<SFML/System.hpp>
@@ -1106,4 +1108,18 @@
 1730412134 c:\users\ccfrgp\documents\github\jungle-jump\sfml-2.6.1\include\sfml\audio\soundfilewriter.hpp
 	<SFML/Audio/Export.hpp>
 	<string>
+
+1571584339 c:\users\ccfrgp\documents\github\jungle-jump\rlutil.h
+	<iostream>
+	<string>
+	<cstdio>
+	<stdio.h>
+	<string.h>
+	<windows.h>
+	<conio.h>
+	<termios.h>
+	<unistd.h>
+	<sys/ioctl.h>
+	<sys/types.h>
+	<sys/time.h>
 
