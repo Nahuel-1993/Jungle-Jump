@@ -36,6 +36,14 @@ int main()
 
     int puntos = 0;
 
+    ///Creamos el fondo
+    sf::Sprite image;
+    sf::Texture tex;
+    tex.loadFromFile("FONDO.png");
+
+    image.setTexture(tex);
+
+
 
     //Game Loop (update del juego) *Se subdivide internamente*
 
@@ -73,6 +81,10 @@ int main()
 
 
         window.clear(); //Borra la pantalla para que no se superpongan objetos
+
+        ///Dibujamos el fondo
+        window.draw(image);
+
 
 
         // 4° DRAW (muestra en la pantalla lo que hace update)
