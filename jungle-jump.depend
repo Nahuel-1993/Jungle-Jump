@@ -1145,3 +1145,17 @@
 1730578638 source:c:\users\nahue\onedrive\documentos\utn\materias\programacion\prog 2\tp final\jungle-jump\fruta.cpp
 	"Fruta.h"
 
+1730581831 source:c:\users\nahue\onedrive\documentos\utn\materias\programacion\prog 2\tp final\jungle-jump\camu.cpp
+	"Camu.h"
+	<stdlib.h>
+
+1730581831 c:\users\nahue\onedrive\documentos\utn\materias\programacion\prog 2\tp final\jungle-jump\camu.h
+	"Fruta.h"
+
+1730581831 source:c:\users\nahue\onedrive\documentos\utn\materias\programacion\prog 2\tp final\jungle-jump\maracuya.cpp
+	"Maracuya.h"
+	<stdlib.h>
+
+1730581831 c:\users\nahue\onedrive\documentos\utn\materias\programacion\prog 2\tp final\jungle-jump\maracuya.h
+	"Fruta.h"
+
