@@ -1,9 +1,9 @@
 #pragma once
 #include "Fruta.h"
 
-class Banana : public Fruta {
+class Camu : public Fruta {
 public:
-    Banana();
+    Camu();
     void update() override;
     void respawn() override;
 };

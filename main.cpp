@@ -4,6 +4,9 @@
 #include <ctime>
 #include "Personaje.h"
 #include "Banana.h"
+#include "Maracuya.h"
+#include "Camu.h"
+#include "Bacaba.h"
 #include <iostream>
 #include "rlutil.h" ///Librería para mejoreas del menú
 
@@ -43,14 +46,14 @@ int main()
     window.setFramerateLimit(60);
 
     sf::Font font;
-    font.loadFromFile("pixel.ttf"); //Cargamos la fuente para visualizar el puntaje
+    font.loadFromFile("pixel.ttf"); //Carga la fuente para visualizar el puntaje
 
     // Configuro texto
     sf::Text text;
-    text.setFont(font); //Cargo la fuente
-    text.setCharacterSize(24); // Tamaño del texto
-    text.setFillColor(sf::Color::White); // Color del texto
-    text.setPosition(10, 10); // Posición del texto en la pantalla
+    text.setFont(font);
+    text.setCharacterSize(24);
+    text.setFillColor(sf::Color::White);
+    text.setPosition(10, 10);
 
     sf::SoundBuffer buffer;
     buffer.loadFromFile("bite.wav"); //Cargamos un efecto de sonido para la colision
@@ -60,8 +63,19 @@ int main()
 
 
     Personaje alan;
-    Banana banana;
-    banana.respawn();
+
+    /// Crea frutas y las pone en un vector
+    std::vector<Fruta*> frutas = {new Banana(), new Maracuya(), new Bacaba(), new Camu()};
+
+    /// Selecciona una fruta al azar para el primer respawn
+    int indiceFrutaActual = std::rand() % frutas.size();
+    Fruta* frutaActual = frutas[indiceFrutaActual];
+    frutaActual->respawn();
+
+    /// Crea el reloj para controlar el tiempo de respawn
+    sf::Clock relojRespawn;
+    sf::Time tiempoRespawn = sf::seconds(5);
+    bool enRespawn = false;
 
     int puntos = 0;
 
@@ -74,12 +88,12 @@ int main()
 
 
 
-    //Game Loop (update del juego) *Se subdivide internamente*
+    ///Game Loop (update del juego) *Se subdivide internamente*
 
     while (window.isOpen())
     {
-        // 1° Read input - Actualiza los estados de los perifericos de entrada. ↓
-        //Leer la cola de mensajes
+        /// 1° Read input - Actualiza los estados de los perifericos de entrada. ↓
+        /// Leer la cola de mensajes
 
         sf::Event event;
         while (window.pollEvent(event))
@@ -88,26 +102,49 @@ int main()
                 window.close();
         }
 
-        // 2° CMD (Leemos que se apreto y los ejecutamos)
+        /// 2° CMD (Leemos que se apreto y los ejecutamos)
 
 
 
         alan.cmd(); //Evaluamos los comandos
 
 
-        // 3° Update - Actualiza los estados del juego
-        //(Se puede manejar junto con CMD pero Brian prefiere separarlos)
+        /// 3° Update - Actualiza los estados del juego
+        ///(Se puede manejar junto con CMD pero Brian prefiere separarlos)
 
-        alan.update(); //analiza el estado del personaje
-        banana.update();
 
-        if(alan.isCollision(banana)){ //Si los obj colisionan hace un respawn del objeto recolectado
-            banana.respawn();
-            puntos += 50;
-            sound.play();
+        /// Actualizar los estados del juego
+        alan.update();
+
+         if (!enRespawn) {
+            frutaActual->update();
         }
 
-        text.setString(std::to_string(puntos)); //Como los punto no son string, los convierto
+        if (enRespawn) {
+            // Respawn aleatorio después de 5 segundos
+            if (relojRespawn.getElapsedTime() >= tiempoRespawn) {
+                int nuevoIndice;
+                do {
+                    nuevoIndice = std::rand() % frutas.size();
+                } while (nuevoIndice == indiceFrutaActual);
+                indiceFrutaActual = nuevoIndice;
+                frutaActual = frutas[indiceFrutaActual];
+                frutaActual->respawn();
+                enRespawn = false;
+                relojRespawn.restart();
+            }
+        } else {
+            // Comprueba colisiones
+            if (alan.isCollision(*frutaActual)) {
+                enRespawn = true;
+                puntos += 50;
+                sound.play();
+                relojRespawn.restart(); // Reiniciar el reloj de respawn
+            }
+        }
+
+
+        text.setString(std::to_string(puntos)); //Como los punto no son string, los convierte
 
 
         window.clear(); //Borra la pantalla para que no se superpongan objetos
@@ -117,24 +154,23 @@ int main()
 
 
 
-        // 4° DRAW (muestra en la pantalla lo que hace update)
+        /// 4° DRAW (muestra en la pantalla lo que hace update)
 
+        /// Dibujar personaje y fruta actual
         window.draw(alan);
-        window.draw(banana);
+        window.draw(*frutaActual);
         window.draw(text);
 
 
-        // 5° Display - Flip
+        /// 5° Display - Flip
         window.display();
-
-
 
 
 
 
     }
 
-    // Liberacion del juego (Con SFML no hace falta)
+    /// Liberacion del juego (Con SFML no hace falta)
 
     return 0;
 }
