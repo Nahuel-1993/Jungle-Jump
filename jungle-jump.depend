@@ -1,11 +1,14 @@
 # depslib dependency file v1.0
-1730474747 source:c:\users\nahue\onedrive\documentos\utn\materias\programacion\prog 2\tp final\jungle-jump\main.cpp
+1730583982 source:c:\users\nahue\onedrive\documentos\utn\materias\programacion\prog 2\tp final\jungle-jump\main.cpp
 	<SFML/Graphics.hpp>
 	<SFML/Audio.hpp>
 	<stdlib.h>
 	<ctime>
 	"Personaje.h"
 	"Banana.h"
+	"Maracuya.h"
+	"Camu.h"
+	"Bacaba.h"
 	<iostream>
 	"rlutil.h"
 
@@ -431,7 +434,7 @@
 	<SFML\Graphics.hpp>
 	"Collisionable.h"
 
-1730474747 source:c:\users\nahue\onedrive\documentos\utn\materias\programacion\prog 2\tp final\jungle-jump\personaje.cpp
+1730582456 source:c:\users\nahue\onedrive\documentos\utn\materias\programacion\prog 2\tp final\jungle-jump\personaje.cpp
 	"Personaje.h"
 
 1730297811 source:c:\users\nahue\onedrive\documentos\utn\materias\programacion\prog 2\tp final\jungle-jump\frutas.cpp
@@ -1157,5 +1160,12 @@
 	<stdlib.h>
 
 1730581831 c:\users\nahue\onedrive\documentos\utn\materias\programacion\prog 2\tp final\jungle-jump\maracuya.h
+	"Fruta.h"
+
+1730581983 source:c:\users\nahue\onedrive\documentos\utn\materias\programacion\prog 2\tp final\jungle-jump\bacaba.cpp
+	"Bacaba.h"
+	<stdlib.h>
+
+1730581983 c:\users\nahue\onedrive\documentos\utn\materias\programacion\prog 2\tp final\jungle-jump\bacaba.h
 	"Fruta.h"
 

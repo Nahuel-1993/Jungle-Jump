@@ -4,6 +4,9 @@
 #include <ctime>
 #include "Personaje.h"
 #include "Banana.h"
+#include "Maracuya.h"
+#include "Camu.h"
+#include "Bacaba.h"
 #include <iostream>
 #include "rlutil.h" ///Librería para mejoreas del menú
 
@@ -60,8 +63,14 @@ int main()
 
 
     Personaje alan;
-    Banana banana;
-    banana.respawn();
+
+    /// Crear frutas y añadirlas a un vector
+    std::vector<Fruta*> frutas = {new Banana(), new Maracuya(), new Bacaba(), new Camu()};
+
+    /// Seleccionar una fruta al azar para el primer respawn
+    int indiceFrutaActual = std::rand() % frutas.size();
+    Fruta* frutaActual = frutas[indiceFrutaActual];
+    frutaActual->respawn();
 
     int puntos = 0;
 
@@ -88,21 +97,26 @@ int main()
                 window.close();
         }
 
-        // 2° CMD (Leemos que se apreto y los ejecutamos)
+        /// 2° CMD (Leemos que se apreto y los ejecutamos)
 
 
 
         alan.cmd(); //Evaluamos los comandos
 
 
-        // 3° Update - Actualiza los estados del juego
-        //(Se puede manejar junto con CMD pero Brian prefiere separarlos)
+        /// 3° Update - Actualiza los estados del juego
+        ///(Se puede manejar junto con CMD pero Brian prefiere separarlos)
 
-        alan.update(); //analiza el estado del personaje
-        banana.update();
 
-        if(alan.isCollision(banana)){ //Si los obj colisionan hace un respawn del objeto recolectado
-            banana.respawn();
+        /// Actualizar los estados del juego
+        alan.update();
+        frutaActual->update();
+
+       // Comprobar colisiones y respawn aleatorio
+        if (alan.isCollision(*frutaActual)) {
+            indiceFrutaActual = std::rand() % frutas.size();
+            frutaActual = frutas[indiceFrutaActual];
+            frutaActual->respawn();
             puntos += 50;
             sound.play();
         }
@@ -117,24 +131,23 @@ int main()
 
 
 
-        // 4° DRAW (muestra en la pantalla lo que hace update)
+        /// 4° DRAW (muestra en la pantalla lo que hace update)
 
+        /// Dibujar personaje y fruta actual
         window.draw(alan);
-        window.draw(banana);
+        window.draw(*frutaActual);
         window.draw(text);
 
 
-        // 5° Display - Flip
+        /// 5° Display - Flip
         window.display();
-
-
 
 
 
 
     }
 
-    // Liberacion del juego (Con SFML no hace falta)
+    /// Liberacion del juego (Con SFML no hace falta)
 
     return 0;
 }

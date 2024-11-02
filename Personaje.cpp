@@ -17,13 +17,13 @@ void Personaje::cmd() {
         _estado = ESTADOS_PERSONAJE::QUIETO; // Estado predeterminado
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up) && sf::Keyboard::isKeyPressed(sf::Keyboard::Right)) {
             _estado = ESTADOS_PERSONAJE::SALTANDO_ADELANTE;
-            _velocidadSalto = 10;
+            _velocidadSalto = 13;
         } else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up) && sf::Keyboard::isKeyPressed(sf::Keyboard::Left)) {
             _estado = ESTADOS_PERSONAJE::SALTANDO_ATRAS;
-            _velocidadSalto = 10;
+            _velocidadSalto = 13;
         } else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up)) {
             _estado = ESTADOS_PERSONAJE::SALTANDO;
-            _velocidadSalto = 10;
+            _velocidadSalto = 13;
         } else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right)) {
             _estado = ESTADOS_PERSONAJE::CAMINANDO_ADELANTE;
         } else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left)) {
