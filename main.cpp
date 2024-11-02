@@ -11,8 +11,10 @@
 int main()
 {
     std::srand((unsigned)std::time(0));
-
-    Menu();
+    int op=0;
+    do{
+            Menu();
+    }while (op != 0);
 
     //Inicializacion de la ventana
     sf::RenderWindow window(sf::VideoMode(800, 600), "Jungle Jump");

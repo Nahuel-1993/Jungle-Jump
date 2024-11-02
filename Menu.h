@@ -7,7 +7,6 @@ void Menu(){
 int op=1, y =0;
     rlutil::setBackgroundColor(rlutil::GREEN); ///CAMBIAMOS EL COLOR DE FONDO DE LA CONSOLA
     rlutil::hidecursor(); ///Ocultamos el cursor para que no se vea al lado
-    do{
             ///Debería comentarlo para que no titlé la pantalla cuando muevo el cursor, pero cuando lo hago se sale lo verde
             rlutil::cls(); ///Limpia la pantalla cada vez que se elije una opción
             rlutil::setBackgroundColor(rlutil::GREEN); ///CAMBIAMOS EL COLOR DE FONDO DE LA CONSOLA
@@ -47,31 +46,42 @@ int op=1, y =0;
                 default:
                     break;
             }
-    }while (op != 0);
+
 }
 void enter(int *y, int *op){
+    std:: string nombre;
         switch (*y){
-                case 2:
-                    std:: system("cls");
-                    rlutil::locate(48,9);
-                    std::cout<< "-------::JUNGLE - JUMP::------- " << std::endl;
-                    rlutil::locate(48, 10);
-                    std::cout<< "\n"<<std::endl;
-                    rlutil::locate(50,11);
-                    std::cout<< "Feijoo Nahuel, "<< std::endl;
-                    rlutil::locate(50, 12);
-                    std::cout<< "Sanchez Eugenia, 27704"<<std::endl;
-                    rlutil::locate(48, 13);
-                    std::cout<< "\n"<<std::endl;
-                    rlutil::locate(40, 14);
-                    std::cout<< "PRESIONE ENTER PARA VOLVER AL MENU PRINCIPAL"<<std::endl;
-                    if (rlutil::getkey() == 1){ op = 0;}
+            case 0:
+                std:: system("cls");
+                rlutil::locate(48,9);
+                std:: cout<< "INGRESE NOMBRE: " << std::endl;
+                rlutil::locate(48,10);
+                std:: cin>> nombre;
+                rlutil::locate(48,11);
+                std:: system ("pause");
+                op=0;
+                break;
+            case 2:
+                std:: system("cls");
+                rlutil::locate(48,9);
+                std::cout<< "-------::JUNGLE - JUMP::------- " << std::endl;
+                rlutil::locate(48, 10);
+                std::cout<< "\n"<<std::endl;
+                rlutil::locate(50,11);
+                std::cout<< "Feijoo Nahuel, "<< std::endl;
+                rlutil::locate(50, 12);
+                std::cout<< "Sanchez Eugenia, 27704"<<std::endl;
+                rlutil::locate(48, 13);
+                std::cout<< "\n"<<std::endl;
+                rlutil::locate(40, 14);
+                std::cout<< "PRESIONE ENTER PARA VOLVER AL MENU PRINCIPAL"<<std::endl;
+                if (rlutil::getkey() == 1){ op = 0;}
 
-                case 4:
-                     op=0;
-                     break;
-                default:
-                     break;
+            case 4:
+                  op=0;
+                  break;
+            default:
+                   break;
             }
 
 
