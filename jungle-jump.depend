@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1730473527 source:c:\users\nahue\onedrive\documentos\utn\materias\programacion\prog 2\tp final\jungle-jump\main.cpp
+1730474747 source:c:\users\nahue\onedrive\documentos\utn\materias\programacion\prog 2\tp final\jungle-jump\main.cpp
 	<SFML/Graphics.hpp>
 	<SFML/Audio.hpp>
 	<stdlib.h>
@@ -431,7 +431,7 @@
 	<SFML\Graphics.hpp>
 	"Collisionable.h"
 
-1730474132 source:c:\users\nahue\onedrive\documentos\utn\materias\programacion\prog 2\tp final\jungle-jump\personaje.cpp
+1730474747 source:c:\users\nahue\onedrive\documentos\utn\materias\programacion\prog 2\tp final\jungle-jump\personaje.cpp
 	"Personaje.h"
 
 1730297811 source:c:\users\nahue\onedrive\documentos\utn\materias\programacion\prog 2\tp final\jungle-jump\frutas.cpp
@@ -440,13 +440,12 @@
 1730297811 c:\users\nahue\onedrive\documentos\utn\materias\programacion\prog 2\tp final\jungle-jump\frutas.h
 	<SFML\Graphics.hpp>
 
-1730380207 c:\users\nahue\onedrive\documentos\utn\materias\programacion\prog 2\tp final\jungle-jump\banana.h
-	<SFML\Graphics.hpp>
-	"Collisionable.h"
+1730578638 c:\users\nahue\onedrive\documentos\utn\materias\programacion\prog 2\tp final\jungle-jump\banana.h
+	"Fruta.h"
 
-1730474319 source:c:\users\nahue\onedrive\documentos\utn\materias\programacion\prog 2\tp final\jungle-jump\banana.cpp
-	<stdlib.h>
+1730581195 source:c:\users\nahue\onedrive\documentos\utn\materias\programacion\prog 2\tp final\jungle-jump\banana.cpp
 	"Banana.h"
+	<stdlib.h>
 
 1730380207 source:c:\users\nahue\onedrive\documentos\utn\materias\programacion\prog 2\tp final\jungle-jump\collisionable.cpp
 	"Collisionable.h"
@@ -1138,4 +1137,11 @@
 	<sys/ioctl.h>
 	<sys/types.h>
 	<sys/time.h>
+
+1730578638 c:\users\nahue\onedrive\documentos\utn\materias\programacion\prog 2\tp final\jungle-jump\fruta.h
+	<SFML/Graphics.hpp>
+	"Collisionable.h"
+
+1730578638 source:c:\users\nahue\onedrive\documentos\utn\materias\programacion\prog 2\tp final\jungle-jump\fruta.cpp
+	"Fruta.h"
 
