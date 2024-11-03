@@ -42,10 +42,18 @@
 			<Add library="sfml-audio" />
 			<Add directory="SFML-2.6.1/lib" />
 		</Linker>
+		<Unit filename="Bacaba.cpp" />
+		<Unit filename="Bacaba.h" />
 		<Unit filename="Banana.cpp" />
 		<Unit filename="Banana.h" />
+		<Unit filename="Camu.cpp" />
+		<Unit filename="Camu.h" />
 		<Unit filename="Collisionable.cpp" />
 		<Unit filename="Collisionable.h" />
+		<Unit filename="Fruta.cpp" />
+		<Unit filename="Fruta.h" />
+		<Unit filename="Maracuya.cpp" />
+		<Unit filename="Maracuya.h" />
 		<Unit filename="Personaje.cpp" />
 		<Unit filename="Personaje.h" />
 		<Unit filename="main.cpp" />
