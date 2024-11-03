@@ -16,5 +16,6 @@ void Camu::update() {
 }
 
 void Camu::respawn() {
-    _sprite.setPosition(std::rand() % 700 + _sprite.getGlobalBounds().width, std::rand() % 500 + _sprite.getGlobalBounds().width);
+    setPosition(rand() % 800, -50); // Posiciona la fruta justo arriba de la ventana
+    setVelocidadCaida(2.0f); // Reinicia la velocidad de caída
 }

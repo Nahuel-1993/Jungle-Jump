@@ -41,14 +41,14 @@ int main()
     } while (op != 0);
 */
 
-    //Inicializacion de la ventana
+    ///Inicializacion de la ventana
     sf::RenderWindow window(sf::VideoMode(800, 600), "Jungle Jump");
     window.setFramerateLimit(60);
 
     sf::Font font;
     font.loadFromFile("pixel.ttf"); //Carga la fuente para visualizar el puntaje
 
-    // Configuro texto
+    /// Configuro texto
     sf::Text text;
     text.setFont(font);
     text.setCharacterSize(24);
@@ -116,30 +116,36 @@ int main()
         /// Actualizar los estados del juego
         alan.update();
 
-         if (!enRespawn) {
-            frutaActual->update();
-        }
+        if (enRespawn)
+        {
+            frutaActual->setPosition(-100, -100);
 
-        if (enRespawn) {
-            // Respawn aleatorio después de 5 segundos
-            if (relojRespawn.getElapsedTime() >= tiempoRespawn) {
+            if (relojRespawn.getElapsedTime() >= tiempoRespawn)
+            {
                 int nuevoIndice;
-                do {
+                do
+                {
                     nuevoIndice = std::rand() % frutas.size();
-                } while (nuevoIndice == indiceFrutaActual);
+                }
+                while (nuevoIndice == indiceFrutaActual);
                 indiceFrutaActual = nuevoIndice;
                 frutaActual = frutas[indiceFrutaActual];
                 frutaActual->respawn();
                 enRespawn = false;
                 relojRespawn.restart();
             }
-        } else {
-            // Comprueba colisiones
-            if (alan.isCollision(*frutaActual)) {
+        }
+        else
+        {
+            frutaActual->update(); // Llamamos a update de la clase derivada
+
+            if (alan.isCollision(*frutaActual))
+            {
                 enRespawn = true;
                 puntos += 50;
                 sound.play();
-                relojRespawn.restart(); // Reiniciar el reloj de respawn
+                frutaActual->setPosition(-100, -100);
+                relojRespawn.restart();
             }
         }
 
@@ -149,24 +155,18 @@ int main()
 
         window.clear(); //Borra la pantalla para que no se superpongan objetos
 
+        /// 4° DRAW (muestra en la pantalla lo que hace update)
+
         ///Dibujamos el fondo
         window.draw(image);
-
-
-
-        /// 4° DRAW (muestra en la pantalla lo que hace update)
 
         /// Dibujar personaje y fruta actual
         window.draw(alan);
         window.draw(*frutaActual);
         window.draw(text);
 
-
         /// 5° Display - Flip
         window.display();
-
-
-
 
     }
 
