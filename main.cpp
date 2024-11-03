@@ -4,10 +4,17 @@
 #include <ctime>
 #include "Personaje.h"
 #include "Banana.h"
+#include <iostream>
+#include "Menu.h"
+#include "rlutil.h" ///Librería para mejoreas del menú
 
 int main()
 {
     std::srand((unsigned)std::time(0));
+    int op=0;
+    do{
+            Menu();
+    }while (op != 0);
 
     //Inicializacion de la ventana
     sf::RenderWindow window(sf::VideoMode(800, 600), "Jungle Jump");
