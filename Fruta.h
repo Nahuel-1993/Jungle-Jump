@@ -12,7 +12,8 @@ public:
     Fruta();
     virtual void update() = 0; // Método virtual obligatorio para que cada fruta lo implemente
     void draw(sf::RenderTarget& target, sf::RenderStates states) const override;
-    virtual void respawn() = 0; //Igual que update
+    virtual void respawn() = 0; // Igual que update
     sf::FloatRect getBounds() const override;
     void setPosition(float x, float y);
+    void setVelocidadCaida(float velocidad); // Añadir método para establecer velocidad de caída
 };

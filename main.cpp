@@ -118,10 +118,8 @@ int main()
 
         if (enRespawn)
         {
-            /// Mover fruta actual fuera de la pantalla
             frutaActual->setPosition(-100, -100);
 
-            /// Respawn aleatorio después de 5 segundos
             if (relojRespawn.getElapsedTime() >= tiempoRespawn)
             {
                 int nuevoIndice;
@@ -139,14 +137,15 @@ int main()
         }
         else
         {
-            /// Comprueba colisiones
+            frutaActual->update(); // Llamamos a update de la clase derivada
+
             if (alan.isCollision(*frutaActual))
             {
                 enRespawn = true;
                 puntos += 50;
                 sound.play();
-                frutaActual->setPosition(-100, -100); // Mover fruta fuera de la pantalla inmediatamente
-                relojRespawn.restart(); // Reiniciar el reloj de respawn
+                frutaActual->setPosition(-100, -100);
+                relojRespawn.restart();
             }
         }
 

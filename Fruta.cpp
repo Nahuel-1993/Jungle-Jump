@@ -1,6 +1,6 @@
 #include "Fruta.h"
 
-Fruta::Fruta() {
+Fruta::Fruta() : _velocidadCaida(2.0f) { // Inicializar la velocidad de caída
     // Constructor vacío o con inicializaciones comunes a todas las frutas
 }
 
@@ -14,7 +14,8 @@ sf::FloatRect Fruta::getBounds() const {
 
 void Fruta::setPosition(float x, float y) {
     _sprite.setPosition(x, y);
-    _velocidadCaida = 0;
-    _velocidadCaida -= 0.5; // Aplicando gravedad
-    _sprite.move(0, -_velocidadCaida);
+}
+
+void Fruta::setVelocidadCaida(float velocidad) {
+    _velocidadCaida = velocidad;
 }
