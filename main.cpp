@@ -7,6 +7,7 @@
 #include "Maracuya.h"
 #include "Camu.h"
 #include "Bacaba.h"
+#include "RespawnFruta.h"
 #include <iostream>
 #include "rlutil.h" ///Librería para mejoreas del menú
 
@@ -74,7 +75,7 @@ int main()
 
     /// Crea el reloj para controlar el tiempo de respawn
     sf::Clock relojRespawn;
-    sf::Time tiempoRespawn = sf::seconds(5);
+
     bool enRespawn = false;
 
     int puntos = 0;
@@ -116,39 +117,7 @@ int main()
         /// Actualizar los estados del juego
         alan.update();
 
-        if (enRespawn)
-        {
-            frutaActual->setPosition(-100, -100);
-
-            if (relojRespawn.getElapsedTime() >= tiempoRespawn)
-            {
-                int nuevoIndice;
-                do
-                {
-                    nuevoIndice = std::rand() % frutas.size();
-                }
-                while (nuevoIndice == indiceFrutaActual);
-                indiceFrutaActual = nuevoIndice;
-                frutaActual = frutas[indiceFrutaActual];
-                frutaActual->respawn();
-                enRespawn = false;
-                relojRespawn.restart();
-            }
-        }
-        else
-        {
-            frutaActual->update(); // Llamamos a update de la clase derivada
-
-            if (alan.isCollision(*frutaActual))
-            {
-                enRespawn = true;
-                puntos += 50;
-                sound.play();
-                frutaActual->setPosition(-100, -100);
-                relojRespawn.restart();
-            }
-        }
-
+        manejarRespawn(frutaActual, frutas, indiceFrutaActual, relojRespawn, enRespawn, puntos, sound, alan);
 
         text.setString(std::to_string(puntos)); //Como los punto no son string, los convierte
 
