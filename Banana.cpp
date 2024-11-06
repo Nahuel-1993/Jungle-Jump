@@ -10,6 +10,9 @@ Banana::Banana() {
 
 void Banana::update() {
     _sprite.move(0, _velocidadCaida); // Mueve la fruta hacia abajo
+     if (_sprite.getPosition().y >= 600) { // Asegurando que no salga de la pantalla
+        _sprite.setPosition(_sprite.getPosition().x, 600);
+    }
 }
 
 void Banana::respawn() {

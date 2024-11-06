@@ -9,8 +9,8 @@ Bacaba::Bacaba() {
 }
 
 void Bacaba::update() {
-    _sprite.move(0, 2); // Movimiento hacia abajo
-    if (_sprite.getPosition().y >= 600) { // Asegurando que no salga de la pantalla
+    _sprite.move(0, _velocidadCaida); // Mueve la fruta hacia abajo
+     if (_sprite.getPosition().y >= 600) { // Asegurando que no salga de la pantalla
         _sprite.setPosition(_sprite.getPosition().x, 600);
     }
 }
