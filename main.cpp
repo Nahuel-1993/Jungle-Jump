@@ -57,12 +57,17 @@ int main()
     text.setFillColor(sf::Color::White);
     text.setPosition(10, 10);
 
+    /// Configuramos el sonido de la mordida
     sf::SoundBuffer buffer;
     buffer.loadFromFile("bite.wav"); //Cargamos un efecto de sonido para la colision
 
     sf::Sound sound; //Es el canal por donde vamos a reproducir el audio
     sound.setBuffer(buffer);
 
+    sf::Music music;
+    music.openFromFile("selva.wav");
+    music.setLoop(true);
+    music.play();
 
     Personaje alan;
 

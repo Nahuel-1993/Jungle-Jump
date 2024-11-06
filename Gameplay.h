@@ -24,6 +24,7 @@ void gameplay(sf::RenderWindow& window, Personaje& alan, std::vector<Fruta*>& fr
         // 3° Update - Actualiza los estados del juego
 
         alan.update();
+
         manejarRespawn(frutaActual, frutas, indiceFrutaActual, relojRespawn, enRespawn, puntos, sound, alan);
 
         text.setString(std::to_string(puntos)); // Como los puntos no son string, los convierte
