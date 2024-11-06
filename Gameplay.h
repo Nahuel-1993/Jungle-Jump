@@ -3,8 +3,9 @@
 #include <vector>
 #include "Personaje.h"
 #include "Fruta.h"
+#include "Puntos.h"
 
-void gameplay(sf::RenderWindow& window, Personaje& alan, std::vector<Fruta*>& frutas, Fruta*& frutaActual, int& indiceFrutaActual, sf::Clock& relojRespawn, bool& enRespawn, int& puntos, sf::Sound& sound, sf::Text& text, sf::Sprite& image) {
+void gameplay(sf::RenderWindow& window, Personaje& alan, std::vector<Fruta*>& frutas, Fruta*& frutaActual, int& indiceFrutaActual, sf::Clock& relojRespawn, bool& enRespawn, Puntos& puntos, sf::Sound& sound, sf::Text& text, sf::Sprite& image, sf::Music& music) {
     while (window.isOpen())
     {
         // 1° Read input - Actualiza los estados de los periféricos de entrada. ↓
@@ -27,7 +28,7 @@ void gameplay(sf::RenderWindow& window, Personaje& alan, std::vector<Fruta*>& fr
 
         manejarRespawn(frutaActual, frutas, indiceFrutaActual, relojRespawn, enRespawn, puntos, sound, alan);
 
-        text.setString(std::to_string(puntos)); // Como los puntos no son string, los convierte
+        text.setString(std::to_string(puntos.getPuntos())); // Como los puntos no son string, los convierte
 
         window.clear(); // Borra la pantalla para que no se superpongan objetos
 
