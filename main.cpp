@@ -2,6 +2,7 @@
 #include <SFML/Audio.hpp>
 #include <stdlib.h>
 #include <ctime>
+#include "Puntos.h"
 #include "Personaje.h"
 #include "Banana.h"
 #include "Maracuya.h"
@@ -84,7 +85,8 @@ int main()
 
     bool enRespawn = false;
 
-    int puntos = 0;
+    /// Inicializo los puntos
+    Puntos puntos;
 
     ///Creamos el fondo
     sf::Sprite image;
@@ -96,7 +98,7 @@ int main()
 
     ///Game Loop (update del juego) *Se subdivide internamente*
 
-    gameplay(window, alan, frutas, frutaActual, indiceFrutaActual, relojRespawn, enRespawn, puntos, sound, text, image);
+    gameplay(window, alan, frutas, frutaActual, indiceFrutaActual, relojRespawn, enRespawn, puntos, sound, text, image, music);
 
     /// Liberacion del juego (Con SFML no hace falta)
 

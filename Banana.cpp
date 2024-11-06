@@ -1,7 +1,7 @@
 #include "Banana.h"
 #include <stdlib.h>
 
-Banana::Banana() {
+Banana::Banana() : Fruta(50) { //50 puntos
     _texture.loadFromFile("banana.png");
     _sprite.setTexture(_texture);
     _sprite.setOrigin(_sprite.getGlobalBounds().width / 2, _sprite.getGlobalBounds().height);
