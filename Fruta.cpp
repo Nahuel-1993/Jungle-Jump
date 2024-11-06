@@ -1,6 +1,6 @@
 #include "Fruta.h"
 
-Fruta::Fruta() : _velocidadCaida(2.0f) { // Inicializar la velocidad de caída
+Fruta::Fruta(int puntos) : _velocidadCaida(2.0f), puntos(puntos) { // Inicializar la velocidad de caída
     // Constructor vacío o con inicializaciones comunes a todas las frutas
 }
 
@@ -18,4 +18,8 @@ void Fruta::setPosition(float x, float y) {
 
 void Fruta::setVelocidadCaida(float velocidad) {
     _velocidadCaida = velocidad;
+}
+
+int Fruta::getPuntos() const {
+    return puntos;
 }

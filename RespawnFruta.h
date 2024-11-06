@@ -21,7 +21,7 @@ void manejarRespawn(Fruta*& frutaActual, std::vector<Fruta*>& frutas, int& indic
 
         if (alan.isCollision(*frutaActual)) {
             enRespawn = true;
-            puntos.agregarPuntos(50); // Usamos la clase Puntos
+            puntos.agregarPuntos(frutaActual->getPuntos()); // Usamos la clase Puntos
             sound.play();
             frutaActual->setPosition(-100, -100);
             relojRespawn.restart();

@@ -1,7 +1,7 @@
 #include "Maracuya.h"
 #include <stdlib.h>
 
-Maracuya::Maracuya() {
+Maracuya::Maracuya() : Fruta(75) {
     _texture.loadFromFile("maracuya.png");
     _sprite.setTexture(_texture);
     _sprite.setOrigin(_sprite.getGlobalBounds().width / 2, _sprite.getGlobalBounds().height);

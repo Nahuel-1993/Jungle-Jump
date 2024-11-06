@@ -1,7 +1,7 @@
 #include "Bacaba.h"
 #include <stdlib.h>
 
-Bacaba::Bacaba() {
+Bacaba::Bacaba() : Fruta(150){
     _texture.loadFromFile("bacaba.png");
     _sprite.setTexture(_texture);
     _sprite.setOrigin(_sprite.getGlobalBounds().width / 2, _sprite.getGlobalBounds().height);
