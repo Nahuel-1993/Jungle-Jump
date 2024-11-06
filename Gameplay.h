@@ -4,6 +4,8 @@
 #include "Personaje.h"
 #include "Fruta.h"
 #include "Puntos.h"
+#include "Plataforma.h"
+#include "manejarRespawn"
 
 void gameplay(sf::RenderWindow& window, Personaje& alan, std::vector<Fruta*>& frutas, Fruta*& frutaActual, int& indiceFrutaActual, sf::Clock& relojRespawn, bool& enRespawn, Puntos& puntos, sf::Sound& sound, sf::Text& text, sf::Sprite& image, sf::Music& music) {
     while (window.isOpen())
@@ -18,13 +20,19 @@ void gameplay(sf::RenderWindow& window, Personaje& alan, std::vector<Fruta*>& fr
                 window.close();
         }
 
+        Plataforma ob;
+
         // 2° CMD (Leemos que se apretó y lo ejecutamos)
 
         alan.cmd(); // Evaluamos los comandos
+        ob.cmd();
 
         // 3° Update - Actualiza los estados del juego
 
+
+
         alan.update();
+        ob.update(); ///Update de las plataformas
 
         manejarRespawn(frutaActual, frutas, indiceFrutaActual, relojRespawn, enRespawn, puntos, sound, alan);
 
@@ -39,6 +47,7 @@ void gameplay(sf::RenderWindow& window, Personaje& alan, std::vector<Fruta*>& fr
 
         // Dibujar personaje y fruta actual
         window.draw(alan);
+        window.draw(ob.getDraw()); ///Dibujamos las platafromas
         window.draw(*frutaActual);
         window.draw(text);
 

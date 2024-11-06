@@ -5,6 +5,7 @@
 #include "Menu.h"
 #include "Puntos.h"
 #include "Personaje.h"
+#include "Plataforma.h"
 #include "Banana.h"
 #include "Maracuya.h"
 #include "Camu.h"
@@ -57,6 +58,7 @@ int main()
     music.play();
 
     Personaje alan;
+    Plataforma ob;
 
     /// Crea frutas y las pone en un vector
     std::vector<Fruta*> frutas = {new Banana(), new Maracuya(), new Bacaba(), new Camu()};
