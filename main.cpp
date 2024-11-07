@@ -13,6 +13,8 @@
 #include "Gameplay.h"
 #include <iostream>
 #include "rlutil.h" ///Librería para mejoreas del menú
+#include "Plataforma.h"
+#include <cstdlib>
 
 void Menu(int &y, int&op);
 void enter(int y, int&op);
@@ -81,10 +83,34 @@ int main()
 
     image.setTexture(tex);
 
+    ///Plataformas aleatorias
+
+    std::vector<Plataforma> plataformas; ///Usamos push_back para añadir elementos al final del vector
+   const float ancho = 100.f;
+   const float alto=20.f;
+
+   for (int i = 0; i < 2; ++i)
+        {
+            float xAleatorio = rand() % 700 + 50;
+            float yAleatorio = rand() % 100 + 50;
+
+            if (i > 0) {
+            while (yAleatorio < plataformas[i-1].getBounds().top + 100) {
+                yAleatorio = rand() % 200 + 50;
+            }
+        }
+
+        plataformas.push_back(Plataforma(xAleatorio, yAleatorio, ancho, alto));
+    }
+
+    for (auto& plataforma : plataformas){
+    plataforma.setTexture("plataforma.png");
+    }
+
 
     ///Game Loop (update del juego) *Se subdivide internamente*
 
-    gameplay(window, alan, frutas, frutaActual, indiceFrutaActual, relojRespawn, enRespawn, puntos, sound, text, image, music);
+    gameplay(window, alan, frutas, frutaActual, indiceFrutaActual, relojRespawn, enRespawn, puntos, sound, text, image, music, plataformas);
 
     /// Liberacion del juego (Con SFML no hace falta)
 
