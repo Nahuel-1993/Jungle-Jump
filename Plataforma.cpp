@@ -8,7 +8,7 @@ Plataforma::Plataforma(float x, float y, float ancho, float alto)
     : _velocidadCaida(2.0f) ///Inicializamos la velocidad de caída
  {
         _shape.setPosition(x, y);  ///Posicion de la plataforma
-        _shape.setSize(sf::Vector2f(100, 30));  /// Tamaño
+        _shape.setSize(sf::Vector2f(100, 20));  /// Tamaño
         _shape.setFillColor(sf::Color::Green);  ///Elegimos el color
         setTexture("plataforma.png");
 
@@ -48,6 +48,7 @@ sf::FloatRect Plataforma::getBounds() const {
 }
 void Plataforma::respawn()
 {
+
     float xAleatorio = rand() %700 + 50;
     float yAleatorio = rand() %100 + 50;
     _shape.setPosition(xAleatorio,yAleatorio);

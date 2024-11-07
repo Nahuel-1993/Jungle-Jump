@@ -2239,7 +2239,7 @@
 1730951765 source:c:\users\ccfrgp\documents\jungle jum 2 prueba\jungle-jump\fruta.cpp
 	"Fruta.h"
 
-1730962549 source:c:\users\ccfrgp\documents\jungle jum 2 prueba\jungle-jump\main.cpp
+1730980072 source:c:\users\ccfrgp\documents\jungle jum 2 prueba\jungle-jump\main.cpp
 	<SFML/Graphics.hpp>
 	<SFML/Audio.hpp>
 	<stdlib.h>
@@ -2391,7 +2391,7 @@
 
 1730948091 c:\users\ccfrgp\documents\jungle jum 2 prueba\jungle-jump\respawnfruta.h
 
-1730959327 c:\users\ccfrgp\documents\jungle jum 2 prueba\jungle-jump\gameplay.h
+1730978539 c:\users\ccfrgp\documents\jungle jum 2 prueba\jungle-jump\gameplay.h
 	<SFML/Graphics.hpp>
 	<SFML/Audio.hpp>
 	<vector>
@@ -2407,7 +2407,7 @@
 1730948091 source:c:\users\ccfrgp\documents\jungle jum 2 prueba\jungle-jump\personaje.cpp
 	"Personaje.h"
 
-1730962002 source:c:\users\ccfrgp\documents\jungle jum 2 prueba\jungle-jump\plataforma.cpp
+1730980072 source:c:\users\ccfrgp\documents\jungle jum 2 prueba\jungle-jump\plataforma.cpp
 	"Plataforma.h"
 	<SFML/Graphics.hpp>
 	<cstdlib>

@@ -89,14 +89,14 @@ int main()
    const float ancho = 100.f;
    const float alto=20.f;
 
-   for (int i = 0; i < 3; ++i)
+   for (int i = 0; i < 2; ++i)
         {
-            float xAleatorio = rand() % 650 + 25;
-            float yAleatorio = rand() % 200 + 25;
+            float xAleatorio = rand() % 700 + 50;
+            float yAleatorio = rand() % 100 + 50;
 
             if (i > 0) {
             while (yAleatorio < plataformas[i-1].getBounds().top + 100) {
-                yAleatorio = rand() % 200 + 25;
+                yAleatorio = rand() % 200 + 50;
             }
         }
 
