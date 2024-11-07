@@ -23,3 +23,16 @@ void Fruta::setVelocidadCaida(float velocidad) {
 int Fruta::getPuntos() const {
     return puntos;
 }
+
+///Codigo agregado Euge
+void Fruta::update() { ///chequeamos que la fruta llegue al piso
+    if (_sprite.getPosition().y + _sprite.getGlobalBounds().height >= 600) {
+        respawn();  ///Volvemos a ubicar la fruta
+    } else {
+        _sprite.move(0, _velocidadCaida); ///Si no tocó el piso sigue cayendo
+    }
+}
+void Fruta::respawn() {
+    float x = rand() % 750;  ///Ubicamos aleatoriamente la fruta en la pantalla
+    _sprite.setPosition(x, -_sprite.getGlobalBounds().height);
+}
