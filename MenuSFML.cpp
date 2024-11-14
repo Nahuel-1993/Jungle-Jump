@@ -16,6 +16,12 @@ void MenuSFML::setBackground(const std::string& backgroundImagePath) {
     backgroundSprite.setTexture(backgroundTexture);
 }
 
+void MenuSFML::setMusic(const std::string& musicFilePath) {
+    menuMusic.openFromFile(musicFilePath);
+    menuMusic.setLoop(true);
+    menuMusic.play();
+}
+
 void MenuSFML::draw(sf::RenderWindow& window) {
     window.draw(backgroundSprite); // Dibujar el fondo
 

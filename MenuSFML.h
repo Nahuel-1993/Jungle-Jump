@@ -1,5 +1,6 @@
 #pragma once
 #include <SFML/Graphics.hpp>
+#include <SFML/Audio.hpp>
 #include <vector>
 #include <string>
 
@@ -9,6 +10,7 @@ public:
     void draw(sf::RenderWindow& window);
     void handleInput(sf::RenderWindow& window, int& op);
     void setBackground(const std::string& backgroundImagePath);
+    void setMusic(const std::string& musicFilePath);
 
 private:
     sf::Font font;
@@ -17,4 +19,5 @@ private:
     std::string textoOpciones[4];
     sf::Texture backgroundTexture;
     sf::Sprite backgroundSprite;
+    sf::Music menuMusic;
 };

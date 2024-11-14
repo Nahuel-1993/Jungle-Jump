@@ -27,6 +27,7 @@ int main()
 
     MenuSFML menu;
     menu.setBackground("FondoMenu.png"); // Establecer la imagen de fondo del menú
+    menu.setMusic("Menu.wav");
 
     while (op != 0 && window.isOpen()) {
         menu.handleInput(window, op);
