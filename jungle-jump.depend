@@ -1601,12 +1601,12 @@
 	<SFML/Graphics.hpp>
 	"Collisionable.h"
 
-1730980322 source:c:\users\nahue\onedrive\documentos\utn\materias\programacion\prog-2\tp-final\jungle-jump\main.cpp
+1731593870 source:c:\users\nahue\onedrive\documentos\utn\materias\programacion\prog-2\tp-final\jungle-jump\main.cpp
 	<SFML/Graphics.hpp>
 	<SFML/Audio.hpp>
 	<stdlib.h>
 	<ctime>
-	"Menu.h"
+	"MenuSFML.h"
 	"Puntos.h"
 	"Personaje.h"
 	"Banana.h"
@@ -1616,7 +1616,6 @@
 	"RespawnFruta.h"
 	"Gameplay.h"
 	<iostream>
-	"rlutil.h"
 	"Plataforma.h"
 	<cstdlib>
 
@@ -2432,4 +2431,12 @@
 	<cstdlib>
 	<ctime>
 	<iostream>
+
+1731593147 c:\users\nahue\onedrive\documentos\utn\materias\programacion\prog-2\tp-final\jungle-jump\menusfml.h
+	<SFML/Graphics.hpp>
+	<vector>
+	<string>
+
+1731593199 source:c:\users\nahue\onedrive\documentos\utn\materias\programacion\prog-2\tp-final\jungle-jump\menusfml.cpp
+	"MenuSFML.h"
 

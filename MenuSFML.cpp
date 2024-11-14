@@ -7,11 +7,18 @@ MenuSFML::MenuSFML() : seleccion(0), textoOpciones{"JUGAR", "ESTADISTICA", "CRED
         opciones[i].setString(textoOpciones[i]);
         opciones[i].setCharacterSize(24);
         opciones[i].setFillColor(sf::Color::White);
-        opciones[i].setPosition(350, 200 + i * 50);
+        opciones[i].setPosition(10, 200 + i * 50);
     }
 }
 
+void MenuSFML::setBackground(const std::string& backgroundImagePath) {
+    backgroundTexture.loadFromFile(backgroundImagePath);
+    backgroundSprite.setTexture(backgroundTexture);
+}
+
 void MenuSFML::draw(sf::RenderWindow& window) {
+    window.draw(backgroundSprite); // Dibujar el fondo
+
     for (int i = 0; i < 4; ++i) {
         if (i == seleccion) {
             opciones[i].setFillColor(sf::Color::Red);
