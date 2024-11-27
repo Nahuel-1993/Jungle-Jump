@@ -36,6 +36,9 @@ int main()
         window.display();
     }
 
+    /// Detener la música del menú antes de comenzar el gameplay
+    menu.stopMusic();
+
     /// Configuro texto
     sf::Font font;
     font.loadFromFile("pixel.ttf");

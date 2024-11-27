@@ -11,6 +11,8 @@ public:
     void handleInput(sf::RenderWindow& window, int& op);
     void setBackground(const std::string& backgroundImagePath);
     void setMusic(const std::string& musicFilePath);
+    void stopMusic();
+
 
 private:
     sf::Font font;

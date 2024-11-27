@@ -1601,7 +1601,7 @@
 	<SFML/Graphics.hpp>
 	"Collisionable.h"
 
-1731596520 source:c:\users\nahue\onedrive\documentos\utn\materias\programacion\prog-2\tp-final\jungle-jump\main.cpp
+1732715103 source:c:\users\nahue\onedrive\documentos\utn\materias\programacion\prog-2\tp-final\jungle-jump\main.cpp
 	<SFML/Graphics.hpp>
 	<SFML/Audio.hpp>
 	<stdlib.h>
@@ -2432,12 +2432,12 @@
 	<ctime>
 	<iostream>
 
-1731596570 c:\users\nahue\onedrive\documentos\utn\materias\programacion\prog-2\tp-final\jungle-jump\menusfml.h
+1732714792 c:\users\nahue\onedrive\documentos\utn\materias\programacion\prog-2\tp-final\jungle-jump\menusfml.h
 	<SFML/Graphics.hpp>
 	<SFML/Audio.hpp>
 	<vector>
 	<string>
 
-1731596570 source:c:\users\nahue\onedrive\documentos\utn\materias\programacion\prog-2\tp-final\jungle-jump\menusfml.cpp
+1732714792 source:c:\users\nahue\onedrive\documentos\utn\materias\programacion\prog-2\tp-final\jungle-jump\menusfml.cpp
 	"MenuSFML.h"
 

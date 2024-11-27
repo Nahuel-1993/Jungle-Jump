@@ -62,3 +62,7 @@ void MenuSFML::handleInput(sf::RenderWindow& window, int& op) {
         }
     }
 }
+
+void MenuSFML::stopMusic() {
+    menuMusic.stop();
+}
