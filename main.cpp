@@ -54,11 +54,14 @@ int main()
     buffer.loadFromFile("bite.wav");
     sf::Sound sound;
     sound.setBuffer(buffer);
+    sound.setVolume(30);
 
+    /// Sonido del gameplay
     sf::Music music;
     music.openFromFile("selva.wav");
     music.setLoop(true);
     music.play();
+    music.setVolume(30);
 
     Personaje alan;
 

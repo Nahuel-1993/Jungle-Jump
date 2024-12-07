@@ -1601,7 +1601,7 @@
 	<SFML/Graphics.hpp>
 	"Collisionable.h"
 
-1733600713 source:c:\users\nahue\onedrive\documentos\utn\materias\programacion\prog-2\tp-final\jungle-jump\main.cpp
+1733603597 source:c:\users\nahue\onedrive\documentos\utn\materias\programacion\prog-2\tp-final\jungle-jump\main.cpp
 	<SFML/Graphics.hpp>
 	<SFML/Audio.hpp>
 	<stdlib.h>
@@ -2441,7 +2441,7 @@
 	<vector>
 	<string>
 
-1732717819 source:c:\users\nahue\onedrive\documentos\utn\materias\programacion\prog-2\tp-final\jungle-jump\menusfml.cpp
+1733603598 source:c:\users\nahue\onedrive\documentos\utn\materias\programacion\prog-2\tp-final\jungle-jump\menusfml.cpp
 	"MenuSFML.h"
 
 1733601533 source:c:\users\nahue\onedrive\documentos\utn\materias\programacion\prog-2\tp-final\jungle-jump\capturarnombre.cpp
