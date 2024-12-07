@@ -1601,12 +1601,13 @@
 	<SFML/Graphics.hpp>
 	"Collisionable.h"
 
-1732717819 source:c:\users\nahue\onedrive\documentos\utn\materias\programacion\prog-2\tp-final\jungle-jump\main.cpp
+1733600713 source:c:\users\nahue\onedrive\documentos\utn\materias\programacion\prog-2\tp-final\jungle-jump\main.cpp
 	<SFML/Graphics.hpp>
 	<SFML/Audio.hpp>
 	<stdlib.h>
 	<ctime>
 	"MenuSFML.h"
+	"CapturarNombre.h"
 	"Puntos.h"
 	"Personaje.h"
 	"Banana.h"
@@ -1783,7 +1784,7 @@
 	"Maracuya.h"
 	<stdlib.h>
 
-1732719669 c:\users\nahue\onedrive\documentos\utn\materias\programacion\prog-2\tp-final\jungle-jump\puntos.h
+1733600426 c:\users\nahue\onedrive\documentos\utn\materias\programacion\prog-2\tp-final\jungle-jump\puntos.h
 	<iostream>
 	<cstring>
 
@@ -2440,6 +2441,13 @@
 	<vector>
 	<string>
 
-1732714792 source:c:\users\nahue\onedrive\documentos\utn\materias\programacion\prog-2\tp-final\jungle-jump\menusfml.cpp
+1732717819 source:c:\users\nahue\onedrive\documentos\utn\materias\programacion\prog-2\tp-final\jungle-jump\menusfml.cpp
 	"MenuSFML.h"
+
+1733601108 source:c:\users\nahue\onedrive\documentos\utn\materias\programacion\prog-2\tp-final\jungle-jump\capturarnombre.cpp
+	"CapturarNombre.h"
+
+1733600426 c:\users\nahue\onedrive\documentos\utn\materias\programacion\prog-2\tp-final\jungle-jump\capturarnombre.h
+	<SFML/Graphics.hpp>
+	<string>
 

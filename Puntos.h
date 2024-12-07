@@ -8,16 +8,9 @@ private:
     char vNombreJugador[30];
 
 public:
-    // Constructor por defecto
-    Puntos() : puntos(0) {
-        // Asignar un nombre predeterminado si no se pasa ningún nombre
-        strncpy(vNombreJugador, "Jugador Desconocido", sizeof(vNombreJugador) - 1);
-        vNombreJugador[sizeof(vNombreJugador) - 1] = '\0';  // Asegurar que termine en NULL
-    }
 
     // Constructor que inicializa los puntos a 0 y asigna el nombre del jugador
     Puntos(const char* nombre) : puntos(0) {
-        // Asignar el nombre al arreglo de caracteres
         strncpy(vNombreJugador, nombre, sizeof(vNombreJugador) - 1);
         vNombreJugador[sizeof(vNombreJugador) - 1] = '\0';  // Asegurar que termine en NULL
     }
