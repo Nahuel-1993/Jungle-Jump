@@ -3,6 +3,7 @@
 #include <stdlib.h>
 #include <ctime>
 #include "MenuSFML.h"
+#include "CapturarNombre.h"
 #include "Puntos.h"
 #include "Personaje.h"
 #include "Banana.h"
@@ -53,11 +54,14 @@ int main()
     buffer.loadFromFile("bite.wav");
     sf::Sound sound;
     sound.setBuffer(buffer);
+    sound.setVolume(30);
 
+    /// Sonido del gameplay
     sf::Music music;
     music.openFromFile("selva.wav");
     music.setLoop(true);
     music.play();
+    music.setVolume(30);
 
     Personaje alan;
 
@@ -73,8 +77,12 @@ int main()
     sf::Clock relojRespawn;
     bool enRespawn = false;
 
+    /// Pedir nombre al jugador
+    std::string nombreJugador = capturarNombre(window, font);
+
     /// Inicializo los puntos
-    Puntos puntos;
+    Puntos puntos(nombreJugador.c_str()); ///Le pasamos el nombre al constructor. c_str para obtener puntero const char* del string nombre
+
 
     ///Creamos el fondo
     sf::Sprite image;

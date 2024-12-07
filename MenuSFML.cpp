@@ -20,6 +20,7 @@ void MenuSFML::setMusic(const std::string& musicFilePath) {
     menuMusic.openFromFile(musicFilePath);
     menuMusic.setLoop(true);
     menuMusic.play();
+    menuMusic.setVolume(30);
 }
 
 void MenuSFML::draw(sf::RenderWindow& window) {
