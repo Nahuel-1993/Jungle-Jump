@@ -9,18 +9,17 @@
 void gameplay(sf::RenderWindow& window, Personaje& alan, std::vector<Fruta*>& frutas, Fruta*& frutaActual,
               int& indiceFrutaActual, sf::Clock& relojRespawn, bool& enRespawn, Puntos& puntos,
               sf::Sound& sound, sf::Text& text, sf::Sprite& image, sf::Music& music,
-              std::vector<Plataforma>& plataformas) {
+              std::vector<Plataforma>& plataformas, Vidas& vidas) {
 
-    // Crear el objeto de texto para mostrar el nombre y los puntos del jugador
-    sf::Text nombreYpuntosTexto;
-    nombreYpuntosTexto.setFont(*text.getFont());
-    nombreYpuntosTexto.setCharacterSize(15);
-    nombreYpuntosTexto.setFillColor(sf::Color::White);
-    nombreYpuntosTexto.setPosition(10, 4);
+    // Crear el objeto de texto para mostrar el nombre, los puntos y las vidas
+    sf::Text nombrePuntosVidasTexto;
+    nombrePuntosVidasTexto.setFont(*text.getFont());
+    nombrePuntosVidasTexto.setCharacterSize(15);
+    nombrePuntosVidasTexto.setFillColor(sf::Color::White);
+    nombrePuntosVidasTexto.setPosition(10, 4);
 
     while (window.isOpen()) {
         // 1° Read input - Actualiza los estados de los periféricos de entrada. ↓
-        // Leer la cola de mensajes
         sf::Event event;
         while (window.pollEvent(event)) {
             if (event.type == sf::Event::Closed)
@@ -28,15 +27,18 @@ void gameplay(sf::RenderWindow& window, Personaje& alan, std::vector<Fruta*>& fr
         }
 
         // 2° CMD (Leemos que se apretó y lo ejecutamos)
-        alan.cmd(); // Evaluamos los comandos
+        alan.cmd();
 
         // 3° Update - Actualiza los estados del juego
         alan.update();
         manejarRespawn(frutaActual, frutas, indiceFrutaActual, relojRespawn, enRespawn, puntos, sound, alan);
 
-        std::string nombreYpuntos =  std::string(puntos.getNombre()) + "  " + std::to_string(puntos.getPuntos()); //Concateno combre y puntos
+        // Concatenar nombre, puntos y vidas con salto de línea entre puntos y vidas
+        std::string nombrePuntosVidas = std::string(puntos.getNombre()) +
+                                        "  Puntos: " + std::to_string(puntos.getPuntos()) +
+                                        "\nVidas: " + std::to_string(vidas.getVidas());
 
-        nombreYpuntosTexto.setString(nombreYpuntos);  // Actualizo el texto con el nombre y los puntos
+        nombrePuntosVidasTexto.setString(nombrePuntosVidas);  // Actualizo el texto con el nombre, puntos y vidas
 
         // Actualizamos las frutas
         for (auto& fruta : frutas) {
@@ -64,11 +66,10 @@ void gameplay(sf::RenderWindow& window, Personaje& alan, std::vector<Fruta*>& fr
             window.draw(plataforma.getDraw());
         }
 
-        // Dibujar el nombre y los puntos juntos
-        window.draw(nombreYpuntosTexto);
+        // Dibujar el nombre, los puntos y las vidas
+        window.draw(nombrePuntosVidasTexto);
 
         // 5° Display - Flip (actualiza la ventana)
         window.display();
     }
 }
-

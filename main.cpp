@@ -5,6 +5,7 @@
 #include "MenuSFML.h"
 #include "CapturarNombre.h"
 #include "Puntos.h"
+#include "Vidas.h"
 #include "Personaje.h"
 #include "Banana.h"
 #include "Maracuya.h"
@@ -80,6 +81,9 @@ int main()
     /// Pedir nombre al jugador
     std::string nombreJugador = capturarNombre(window, font);
 
+    /// Inicializo las vidas. El constructor le pone 3
+    Vidas vidas;
+
     /// Inicializo los puntos
     Puntos puntos(nombreJugador.c_str()); ///Le pasamos el nombre al constructor. c_str para obtener puntero const char* del string nombre
 
@@ -113,7 +117,7 @@ int main()
     }
 
     ///Game Loop (update del juego) *Se subdivide internamente*
-    gameplay(window, alan, frutas, frutaActual, indiceFrutaActual, relojRespawn, enRespawn, puntos, sound, text, image, music, plataformas);
+    gameplay(window, alan, frutas, frutaActual, indiceFrutaActual, relojRespawn, enRespawn, puntos, sound, text, image, music, plataformas, vidas);
 
     return 0;
 }
