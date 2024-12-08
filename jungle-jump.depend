@@ -1601,7 +1601,7 @@
 	<SFML/Graphics.hpp>
 	"Collisionable.h"
 
-1733603597 source:c:\users\nahue\onedrive\documentos\utn\materias\programacion\prog-2\tp-final\jungle-jump\main.cpp
+1733693363 source:c:\users\nahue\onedrive\documentos\utn\materias\programacion\prog-2\tp-final\jungle-jump\main.cpp
 	<SFML/Graphics.hpp>
 	<SFML/Audio.hpp>
 	<stdlib.h>
@@ -1609,6 +1609,7 @@
 	"MenuSFML.h"
 	"CapturarNombre.h"
 	"Puntos.h"
+	"Vidas.h"
 	"Personaje.h"
 	"Banana.h"
 	"Maracuya.h"
@@ -1742,7 +1743,7 @@
 
 1732717819 c:\users\nahue\onedrive\documentos\utn\materias\programacion\prog-2\tp-final\jungle-jump\respawnfruta.h
 
-1733603186 c:\users\nahue\onedrive\documentos\utn\materias\programacion\prog-2\tp-final\jungle-jump\gameplay.h
+1733693362 c:\users\nahue\onedrive\documentos\utn\materias\programacion\prog-2\tp-final\jungle-jump\gameplay.h
 	<SFML/Graphics.hpp>
 	<SFML/Audio.hpp>
 	<vector>
@@ -2450,4 +2451,6 @@
 1733600426 c:\users\nahue\onedrive\documentos\utn\materias\programacion\prog-2\tp-final\jungle-jump\capturarnombre.h
 	<SFML/Graphics.hpp>
 	<string>
+
+1733693363 c:\users\nahue\onedrive\documentos\utn\materias\programacion\prog-2\tp-final\jungle-jump\vidas.h
 
