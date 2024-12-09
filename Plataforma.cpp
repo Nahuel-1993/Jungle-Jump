@@ -3,9 +3,10 @@
 #include <cstdlib>
 #include <ctime> ///Para los numero aleatorios
 #include <iostream>
+#include "Personaje.h"
 
 Plataforma::Plataforma(float x, float y, float ancho, float alto)
-    : _velocidadCaida(2.0f) ///Inicializamos la velocidad de caída
+    : _velocidadCaida(0.7f) ///Inicializamos la velocidad de caída
  {
         _shape.setPosition(x, y);  ///Posicion de la plataforma
         _shape.setSize(sf::Vector2f(100, 20));  /// Tamaño
@@ -31,7 +32,8 @@ void Plataforma::update()
 {
     _shape.move(0, _velocidadCaida); /// Movemos la plataforma para abajo
     _sprite.setPosition(_shape.getPosition());
-    if (_shape.getPosition().y >= 600) {
+
+    if (_shape.getPosition().y >= 500) {
         respawn();
     }
 }
@@ -48,9 +50,8 @@ sf::FloatRect Plataforma::getBounds() const {
 }
 void Plataforma::respawn()
 {
-
-    float xAleatorio = rand() %700 + 50;
-    float yAleatorio = rand() %100 + 50;
-    _shape.setPosition(xAleatorio,yAleatorio);
-    _sprite.setPosition(_shape.getPosition());
+    float xAleatorio = rand() %500 + 70;
+    float yAleatorio = 0; ///Bjan todas desde la parte de arriba de la pantalla
+    _shape.setPosition(xAleatorio, yAleatorio); ///Ubicamos en la nueva posición la plataforma
+    _sprite.setPosition(_shape.getPosition()); ///Ubicamos en la misma posició que la plataforma el sprite
 }

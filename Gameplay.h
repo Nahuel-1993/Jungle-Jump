@@ -6,6 +6,7 @@
 #include "Puntos.h"
 #include "Plataforma.h"
 
+
 void gameplay(sf::RenderWindow& window, Personaje& alan, std::vector<Fruta*>& frutas, Fruta*& frutaActual, int& indiceFrutaActual, sf::Clock& relojRespawn, bool& enRespawn, Puntos& puntos, sf::Sound& sound, sf::Text& text, sf::Sprite& image, sf::Music& music,  std::vector<Plataforma>& plataformas)
  {
         while (window.isOpen())
@@ -32,10 +33,6 @@ void gameplay(sf::RenderWindow& window, Personaje& alan, std::vector<Fruta*>& fr
 
         text.setString(std::to_string(puntos.getPuntos())); // Como los puntos no son string, los convierte
 
-        /*for (const auto& plataforma : plataformas) { ///Colision del personaje y las plataformas
-            if (plataforma.getBounds().intersects(alan.getBounds())) {
-                            }
-        } */
 
         ///Actualizamos la posicion de las frutas
         for (auto& fruta : frutas) {
@@ -44,7 +41,19 @@ void gameplay(sf::RenderWindow& window, Personaje& alan, std::vector<Fruta*>& fr
         ///Plataformas
         for (auto& plataforma : plataformas){
             plataforma.update();
-        }
+
+            if (alan.getDraw().getGlobalBounds().intersects(plataforma.getDraw().getGlobalBounds())) {
+                //std::cout << "Colisiono!" << std::endl; ///Verificamos la colision
+
+                sf::Vector2f nuevaPosicion = alan.getSprite().getPosition();
+                nuevaPosicion.y = plataforma.getDraw().getPosition().y - alan.getDraw().getGlobalBounds().height;
+
+                alan.setVelocidadSalto(0);
+                alan.getSprite().setPosition(nuevaPosicion);///Actualizamos la posición a la posición de la plataforma
+                alan.setEstado(QUIETO);
+                alan.enPlataforma = true;
+                }
+               }
 
         window.clear(); // Borra la pantalla para que no se superpongan objetos
 
@@ -53,16 +62,18 @@ void gameplay(sf::RenderWindow& window, Personaje& alan, std::vector<Fruta*>& fr
         // Dibujamos el fondo
         window.draw(image);
 
+        ///Dibujamos las plataformas
+        for (const auto& plataforma : plataformas) {
+            window.draw(plataforma.getDraw());
+        }
+
         // Dibujar personaje y fruta actual
         window.draw(alan);
         window.draw(*frutaActual);
-        for (const auto& plataforma : plataformas) {
-            window.draw(plataforma.getDraw());///Dibujamos las plataformas
-        }
+
         window.draw(text);
-        //window.draw(ob.getdraw());
 
         // 5° Display - Flip
         window.display();
     }
-}
+ }

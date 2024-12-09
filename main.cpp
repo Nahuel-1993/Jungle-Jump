@@ -60,6 +60,7 @@ int main()
 
     Personaje alan;
 
+
     /// Crea frutas y las pone en un vector
     std::vector<Fruta*> frutas = {new Banana(), new Maracuya(), new Bacaba(), new Camu()};
 
@@ -88,25 +89,37 @@ int main()
     std::vector<Plataforma> plataformas; ///Usamos push_back para añadir elementos al final del vector
    const float ancho = 100.f;
    const float alto=20.f;
+   const float distanciaMinima = 70.f;
 
-   for (int i = 0; i < 2; ++i)
-        {
-            float xAleatorio = rand() % 700 + 50;
-            float yAleatorio = rand() % 100 + 50;
+    float xAleatorio = rand() % 500 + 70;
+    float yAleatorio = 50; ///Lo dejamos fijo así las plataformas no aparecen a mitad de la pantalla
+    plataformas.push_back(Plataforma(xAleatorio, yAleatorio, ancho, alto));
 
-            if (i > 0) {
-            while (yAleatorio < plataformas[i-1].getBounds().top + 100) {
-                yAleatorio = rand() % 200 + 50;
+    for(auto& plataforma : plataformas){
+        plataforma.update();
+
+        if (plataforma.getBounds().top >=100 && !plataforma.isNewPlatformGenerated()){
+            for (int i = 0; i < 2; ++i){ ///Este bucle lo quew hace es que las plataformas caigan de manera aleatoria
+            float nuevaX = rand() % 500 + 70;
+            float nuevaY = plataformas[i-1].getBounds().top + distanciaMinima;
+            bool solapamiento = false;
+            for (const auto& plataforma : plataformas){
+                if (plataforma.getBounds().intersects(sf::FloatRect(nuevaX, nuevaY, ancho, alto))) {
+                    solapamiento = true;
+                    break;
+                }
             }
+                if (!solapamiento) {
+                plataformas.push_back(Plataforma(nuevaX, nuevaY, ancho, alto));
+                }
+                }
+                plataforma.setNewPlatformGenerated(true);
         }
-
-        plataformas.push_back(Plataforma(xAleatorio, yAleatorio, ancho, alto));
     }
 
     for (auto& plataforma : plataformas){
     plataforma.setTexture("plataforma.png");
     }
-
 
     ///Game Loop (update del juego) *Se subdivide internamente*
 

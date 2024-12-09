@@ -1,4 +1,6 @@
 #include "Personaje.h"
+#include "Plataforma.h"
+#include <iostream>
 
 Personaje::Personaje()
 {
@@ -31,24 +33,27 @@ void Personaje::cmd() {
         }
     }
 }
-
+bool enPlataforma = false;
 
 void Personaje::update() {
+    enPlataforma = false;
+
     switch (_estado) {
         case QUIETO:
             _velocidadSalto -= 0.5; // Aplicando gravedad
             _sprite.move(0, -_velocidadSalto);
-            if (_sprite.getPosition().y >= 600) {
+            if (_sprite.getPosition().y >= 600) { ///Si el personaje está en el piso
                 _sprite.setPosition(_sprite.getPosition().x, 600);
                 _velocidadSalto = 0;
+                _estado = ESTADOS_PERSONAJE::QUIETO;
             }
             break;
         case CAMINANDO_ADELANTE:
             _velocidadSalto -= 0.5;
-            _sprite.move(5, 0);
+            _sprite.move(5, 0); ///Movemos para adelante
             _sprite.setScale(1, 1);
             if (_sprite.getPosition().y >= 600) {
-                _sprite.setPosition(_sprite.getPosition().x, 600);
+                _sprite.setPosition(_sprite.getPosition().x, 600); ///Evitamos que se salga de la pantalla
                 _estado = ESTADOS_PERSONAJE::QUIETO;
                 _velocidadSalto = 0;
             }
@@ -63,7 +68,7 @@ void Personaje::update() {
             }
             break;
         case SALTANDO:
-            _velocidadSalto -= 0.5;
+            _velocidadSalto -= 0.5f;
             _sprite.move(0, -_velocidadSalto);
             if (_sprite.getPosition().y >= 600) {
                 _sprite.setPosition(_sprite.getPosition().x, 600);
@@ -72,7 +77,7 @@ void Personaje::update() {
             }
             break;
         case SALTANDO_ADELANTE:
-            _velocidadSalto -= 0.5;
+            _velocidadSalto -= 0.5f;
             _sprite.move(5, -_velocidadSalto);
             _sprite.setScale(1, 1);
             if (_sprite.getPosition().y >= 600) {
@@ -82,7 +87,7 @@ void Personaje::update() {
             }
             break;
         case SALTANDO_ATRAS:
-            _velocidadSalto -= 0.5;
+            _velocidadSalto -= 0.5f;
             _sprite.move(-5, -_velocidadSalto);
             _sprite.setScale(-1, 1);
             if (_sprite.getPosition().y >= 600) {
@@ -93,6 +98,9 @@ void Personaje::update() {
             break;
         default:
             break;
+    }
+    if (enPlataforma) {
+        _sprite.move(0, 2);
     }
 
     //Para evitar que salga de la pantalla:
@@ -108,8 +116,12 @@ void Personaje::update() {
     if (_sprite.getGlobalBounds().top + _sprite.getGlobalBounds().height > 600) {
         _sprite.setPosition(_sprite.getPosition().x, 600 + (_sprite.getGlobalBounds().height - _sprite.getOrigin().y));
     }
+
 }
 
+void Personaje::setEstado(ESTADOS_PERSONAJE nuevoEstado) {
+    _estado = nuevoEstado;
+}
 
 void Personaje::draw(sf::RenderTarget& target, sf::RenderStates states) const {
     target.draw(_sprite, states);
@@ -117,4 +129,17 @@ void Personaje::draw(sf::RenderTarget& target, sf::RenderStates states) const {
 
  sf::FloatRect Personaje::getBounds() const {
     return _sprite.getGlobalBounds(); //Hacemos un get de globalBounds porque devuelve un FloatRect que es lo
-}                                     //que necesita getBounds()
+}                              //que necesita getBounds()
+
+const sf::Sprite& Personaje::getDraw() const {
+    return _sprite;
+}
+sf::Sprite& Personaje::getSprite() {
+    return _sprite;
+}
+void Personaje::setVelocidadSalto(float velocidad) {
+    _velocidadSalto = velocidad;  ///Modificamos la velocidad de salto para arreglar la colisión con las plataformas
+    }
+    float Personaje::getVelocidadSalto() const {
+    return _velocidadSalto; ///Devolvemos la velocidad de salto para la colision de plataformas
+    }
