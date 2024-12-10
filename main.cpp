@@ -103,7 +103,7 @@ int main()
     ///Plataformas aleatorias
     std::vector<Plataforma> plataformas; ///Usamos push_back para añadir elementos al final del vector
    const float ancho = 100.f;
-   const float alto=20.f;
+   const float alto=10.f;
    const float distanciaMinima = 100.f;
 
     for (int i = 0; i < 3; ++i) {
@@ -128,10 +128,10 @@ int main()
     for (auto& plataforma : plataformas) {
         plataforma.setTexture("plataforma.png");
     }
+    ///Alan inicia sobre una plataforma
     if (!plataformas.empty()) {
-    // Suponiendo que quieres que Alan inicie en la primera plataforma
-    float xInicial = plataformas[0].getDraw().getPosition().x + (ancho / 2); // Centrar en la plataforma
-    float yInicial = plataformas[0].getDraw().getPosition().y - alan.getDraw().getGlobalBounds().height; // Justo encima de la plataforma
+    float xInicial = plataformas[0].getDraw().getPosition().x + (ancho / 2); ///Centramos a alan respecto de las platafromas
+    float yInicial = plataformas[0].getDraw().getPosition().y - alan.getDraw().getGlobalBounds().height;
     alan.getSprite().setPosition(xInicial, yInicial);
 }
 

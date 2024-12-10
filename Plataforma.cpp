@@ -9,7 +9,7 @@ Plataforma::Plataforma(float x, float y, float ancho, float alto)
     : _velocidadCaida(0.7f) ///Inicializamos la velocidad de caída
  {
         _shape.setPosition(x, y);  ///Posicion de la plataforma
-        _shape.setSize(sf::Vector2f(100, 20));  /// Tamaño
+        _shape.setSize(sf::Vector2f(100, 10));  /// Tamaño
         _shape.setFillColor(sf::Color::Green);  ///Elegimos el color
         setTexture("plataforma.png");
 

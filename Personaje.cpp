@@ -1,6 +1,7 @@
 #include "Personaje.h"
 #include "Plataforma.h"
 #include <iostream>
+#include "Vidas.h"
 
 Personaje::Personaje()
 {
@@ -48,6 +49,7 @@ void Personaje::update() {
                 _sprite.setPosition(_sprite.getPosition().x, 600);
                 _velocidadSalto = 0;
                 _estado = ESTADOS_PERSONAJE::QUIETO;
+                _vidas.perderVida(); /// Perdemos una vida al tocar el piso
             }
             break;
         case CAMINANDO_ADELANTE:

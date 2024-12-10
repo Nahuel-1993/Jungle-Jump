@@ -2,6 +2,7 @@
 #include <SFML\Graphics.hpp>
 #include "Collisionable.h"
 #include "Plataforma.h"
+#include "Vidas.h"
 
     enum ESTADOS_PERSONAJE{
         QUIETO,
@@ -22,6 +23,7 @@ private:
     //sf::Vector2f _velocity;        //Le da un valor a la velocidad de desplazamiento cuando ejecuta en CMD
     ESTADOS_PERSONAJE _estado;
     float _velocidadSalto;
+    Vidas _vidas; // Objeto de la clase Vidas
 
 public:
 
