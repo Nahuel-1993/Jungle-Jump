@@ -12,6 +12,7 @@ public:
     void setBackground(const std::string& backgroundImagePath);
     void setMusic(const std::string& musicFilePath);
     void stopMusic();
+    void mostrarCreditos(sf::RenderWindow& window);
 
 
 private:

@@ -64,6 +64,35 @@ void MenuSFML::handleInput(sf::RenderWindow& window, int& op) {
     }
 }
 
+void MenuSFML::mostrarCreditos(sf::RenderWindow& window) {
+    sf::Text creditsText;
+    creditsText.setFont(font);
+    creditsText.setString("Creditos:\n\nDesarrolladores:\nNahuel Feijoo\nEugenia Sanchez \n\nTrabajo Practico Final\nProgramacion II \n\nUTN Pacheco 2024 tm. \n\n\nGRACIAS POR JUGAR!");
+    creditsText.setCharacterSize(24);
+    creditsText.setFillColor(sf::Color::White);
+    creditsText.setPosition(50, 50);
+
+    // Bucle para mostrar los créditos
+    bool showingCredits = true;
+    while (showingCredits) {
+        sf::Event event;
+        while (window.pollEvent(event)) {
+            if (event.type == sf::Event::Closed) {
+                window.close();
+                showingCredits = false;
+            }
+            if (event.type == sf::Event::KeyPressed) {
+                if (event.key.code == sf::Keyboard::Escape) {
+                    showingCredits = false;
+                }
+            }
+        }
+        window.clear(sf::Color::Black);
+        window.draw(creditsText);
+        window.display();
+    }
+}
+
 void MenuSFML::stopMusic() {
     menuMusic.stop();
 }
