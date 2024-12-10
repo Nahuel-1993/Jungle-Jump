@@ -2,8 +2,10 @@
 #include <SFML/Audio.hpp>
 #include <stdlib.h>
 #include <ctime>
-#include "Menu.h"
+#include "MenuSFML.h"
+#include "CapturarNombre.h"
 #include "Puntos.h"
+#include "Vidas.h"
 #include "Personaje.h"
 #include "Banana.h"
 #include "Maracuya.h"
@@ -12,34 +14,41 @@
 #include "RespawnFruta.h"
 #include "Gameplay.h"
 #include <iostream>
-#include "rlutil.h" ///Librería para mejoreas del menú
 #include "Plataforma.h"
 #include <cstdlib>
-
-void Menu(int &y, int&op);
-void enter(int y, int&op);
-void salir();
 
 int main()
 {
     std::srand((unsigned)std::time(0));
 
-    int op=1, y=0;
-
-    do
-    {
-        Menu(y, op);
-    }
-    while (op != 0);
+    int op = 1;
 
     ///Inicializacion de la ventana
     sf::RenderWindow window(sf::VideoMode(800, 600), "Jungle Jump");
     window.setFramerateLimit(60);
 
-    sf::Font font;
-    font.loadFromFile("pixel.ttf"); //Carga la fuente para visualizar el puntaje
+    MenuSFML menu;
+    menu.setBackground("FondoMenu.png"); // Establecer la imagen de fondo del menú
+    menu.setMusic("Menu.wav");
+
+    while (op != 0 && window.isOpen()) {
+        menu.handleInput(window, op);
+        window.clear();
+        menu.draw(window);
+        window.display();
+
+        if (op == 2){
+            menu.mostrarCreditos(window);
+            op = -1; //Se resetea la opcion para volver al menu
+        }
+    }
+
+    /// Detener la música del menú antes de comenzar el gameplay
+    menu.stopMusic();
 
     /// Configuro texto
+    sf::Font font;
+    font.loadFromFile("pixel.ttf");
     sf::Text text;
     text.setFont(font);
     text.setCharacterSize(24);
@@ -48,15 +57,17 @@ int main()
 
     /// Configuramos el sonido de la mordida
     sf::SoundBuffer buffer;
-    buffer.loadFromFile("bite.wav"); //Cargamos un efecto de sonido para la colision
-
-    sf::Sound sound; //Es el canal por donde vamos a reproducir el audio
+    buffer.loadFromFile("bite.wav");
+    sf::Sound sound;
     sound.setBuffer(buffer);
+    sound.setVolume(30);
 
+    /// Sonido del gameplay
     sf::Music music;
     music.openFromFile("selva.wav");
     music.setLoop(true);
     music.play();
+    music.setVolume(30);
 
     Personaje alan;
 
@@ -71,21 +82,25 @@ int main()
 
     /// Crea el reloj para controlar el tiempo de respawn
     sf::Clock relojRespawn;
-
     bool enRespawn = false;
 
+    /// Pedir nombre al jugador
+    std::string nombreJugador = capturarNombre(window, font);
+
+    /// Inicializo las vidas. El constructor le pone 3
+    Vidas vidas;
+
     /// Inicializo los puntos
-    Puntos puntos;
+    Puntos puntos(nombreJugador.c_str()); ///Le pasamos el nombre al constructor. c_str para obtener puntero const char* del string nombre
+
 
     ///Creamos el fondo
     sf::Sprite image;
     sf::Texture tex;
     tex.loadFromFile("FONDO.png");
-
     image.setTexture(tex);
 
     ///Plataformas aleatorias
-
     std::vector<Plataforma> plataformas; ///Usamos push_back para añadir elementos al final del vector
    const float ancho = 100.f;
    const float alto=20.f;
@@ -97,35 +112,24 @@ int main()
 
     for(auto& plataforma : plataformas){
         plataforma.update();
+    for (int i = 0; i < 2; ++i) {
+        float xAleatorio = rand() % 700 + 50;
+        float yAleatorio = rand() % 100 + 50;
 
-        if (plataforma.getBounds().top >=100 && !plataforma.isNewPlatformGenerated()){
-            for (int i = 0; i < 2; ++i){ ///Este bucle lo quew hace es que las plataformas caigan de manera aleatoria
-            float nuevaX = rand() % 500 + 70;
-            float nuevaY = plataformas[i-1].getBounds().top + distanciaMinima;
-            bool solapamiento = false;
-            for (const auto& plataforma : plataformas){
-                if (plataforma.getBounds().intersects(sf::FloatRect(nuevaX, nuevaY, ancho, alto))) {
-                    solapamiento = true;
-                    break;
-                }
+        if (i > 0) {
+            while (yAleatorio < plataformas[i-1].getBounds().top + 100) {
+                yAleatorio = rand() % 200 + 50;
             }
-                if (!solapamiento) {
-                plataformas.push_back(Plataforma(nuevaX, nuevaY, ancho, alto));
-                }
-                }
-                plataforma.setNewPlatformGenerated(true);
         }
     }
+    }
 
-    for (auto& plataforma : plataformas){
-    plataforma.setTexture("plataforma.png");
+    for (auto& plataforma : plataformas) {
+        plataforma.setTexture("plataforma.png");
     }
 
     ///Game Loop (update del juego) *Se subdivide internamente*
-
-    gameplay(window, alan, frutas, frutaActual, indiceFrutaActual, relojRespawn, enRespawn, puntos, sound, text, image, music, plataformas);
-
-    /// Liberacion del juego (Con SFML no hace falta)
+    gameplay(window, alan, frutas, frutaActual, indiceFrutaActual, relojRespawn, enRespawn, puntos, sound, text, image, music, plataformas, vidas);
 
     return 0;
 }
