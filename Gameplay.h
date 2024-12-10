@@ -9,7 +9,7 @@
 void gameplay(sf::RenderWindow& window, Personaje& alan, std::vector<Fruta*>& frutas, Fruta*& frutaActual,
               int& indiceFrutaActual, sf::Clock& relojRespawn, bool& enRespawn, Puntos& puntos,
               sf::Sound& sound, sf::Text& text, sf::Sprite& image, sf::Music& music,
-              std::vector<Plataforma>& plataformas, Vidas& vidas) {
+              std::vector<Plataforma>& plataformas, Vidas& vidas, bool& gameRunning) {
 
     sf::Clock reloj; // Reloj para medir deltaTime
     sf::Font font;
@@ -21,7 +21,16 @@ void gameplay(sf::RenderWindow& window, Personaje& alan, std::vector<Fruta*>& fr
     gameOverText.setCharacterSize(50);
     gameOverText.setFillColor(sf::Color::Red);
     gameOverText.setString("GAME OVER");
-    gameOverText.setPosition(150, 150);
+    gameOverText.setPosition(100, 150);
+
+    ///CREAMOS EL VOLVER MENU
+    sf::Text volverMenu;
+    volverMenu.setFont(font);
+    volverMenu.setString("Presione ENTER \n para volver al menu principal");
+    volverMenu.setCharacterSize(18);
+    volverMenu.setFillColor(sf::Color::White);
+    volverMenu.setPosition(10, 550);
+
 
     // Crear el objeto de texto para mostrar el nombre, los puntos y las vidas
     sf::Text nombrePuntosVidasTexto;
@@ -30,24 +39,27 @@ void gameplay(sf::RenderWindow& window, Personaje& alan, std::vector<Fruta*>& fr
     nombrePuntosVidasTexto.setFillColor(sf::Color::White);
     nombrePuntosVidasTexto.setPosition(10, 4);
 
-    while (window.isOpen()) {
+    while (window.isOpen() && gameRunning) {
             //float deltaTime = reloj.restart().asSeconds();
         // 1° Read input - Actualiza los estados de los periféricos de entrada. ↓
         sf::Event event;
         while (window.pollEvent(event)) {
             if (event.type == sf::Event::Closed)
                 window.close();
+                ///Si presiona enter volvemos al menú principal
+                if (vidas.getVidas() <= 0 && event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::Enter) {
+                  gameRunning = false;
+                  return; ///SALIMOS Y VOLVEMOS AL MENÚ
+                }
         }
         ///vERIFICAMOS LAS VIDAS
         if (vidas.getVidas() <= 0) {
             window.clear();
-            window.draw(image); // Dibuja el fondo
-            window.draw(gameOverText); // Muestra el mensaje de "Game Over"
+            window.draw(image);
+            window.draw(gameOverText); /// Dibujamos el GAME OVER
+            window.draw(volverMenu); /// DIBUJAMOS EL VOLVER MENU
             window.display();
-
-            sf::sleep(sf::seconds(3)); // Pausa para que el jugador vea el mensaje
-            window.close();
-            break;
+            continue;
         }
 
         // 2° CMD (Leemos que se apretó y lo ejecutamos)

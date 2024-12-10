@@ -2883,7 +2883,7 @@
 1730951765 source:c:\users\ccfrgp\documents\jungle-jump2prueba\jungle-jump\fruta.cpp
 	"Fruta.h"
 
-1733835583 source:c:\users\ccfrgp\documents\jungle-jump2prueba\jungle-jump\main.cpp
+1733841821 source:c:\users\ccfrgp\documents\jungle-jump2prueba\jungle-jump\main.cpp
 	<SFML/Graphics.hpp>
 	<SFML/Audio.hpp>
 	<stdlib.h>
@@ -3040,7 +3040,7 @@
 
 1730948091 c:\users\ccfrgp\documents\jungle-jump2prueba\jungle-jump\respawnfruta.h
 
-1733839889 c:\users\ccfrgp\documents\jungle-jump2prueba\jungle-jump\gameplay.h
+1733843508 c:\users\ccfrgp\documents\jungle-jump2prueba\jungle-jump\gameplay.h
 	<SFML/Graphics.hpp>
 	<SFML/Audio.hpp>
 	<vector>

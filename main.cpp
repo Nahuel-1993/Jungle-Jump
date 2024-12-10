@@ -20,6 +20,7 @@
 int main()
 {
     std::srand((unsigned)std::time(0));
+    bool gameRunning;
 
     int op = 1;
 
@@ -31,6 +32,7 @@ int main()
     menu.setBackground("FondoMenu.png"); // Establecer la imagen de fondo del menú
     menu.setMusic("Menu.wav");
 
+    while (window.isOpen()){
     while (op != 0 && window.isOpen()) {
         menu.handleInput(window, op);
         window.clear();
@@ -42,6 +44,10 @@ int main()
             op = -1; //Se resetea la opcion para volver al menu
         }
     }
+    if (op == 0){
+        gameRunning = true;
+        menu.stopMusic();
+    }else { break;}
 
     /// Detener la música del menú antes de comenzar el gameplay
     menu.stopMusic();
@@ -136,7 +142,11 @@ int main()
 }
 
     ///Game Loop (update del juego) *Se subdivide internamente*
-    gameplay(window, alan, frutas, frutaActual, indiceFrutaActual, relojRespawn, enRespawn, puntos, sound, text, image, music, plataformas, vidas);
+    gameplay(window, alan, frutas, frutaActual, indiceFrutaActual, relojRespawn, enRespawn, puntos, sound, text, image, music, plataformas, vidas, gameRunning);
+
+    op = 1;
+    menu.setMusic("Menu.wav");
+    }
 
     return 0;
 }
