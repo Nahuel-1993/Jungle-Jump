@@ -11,8 +11,6 @@ class Plataforma
         sf::Texture _texture;
         sf::Sprite _sprite;
 
-        bool _nuevaPlataformaGenerada = false; // Controla si se generó una nueva plataforma
-
     public:
 
         Plataforma(float x, float y, float ancho, float alto);
@@ -29,10 +27,4 @@ class Plataforma
         void setTexture(const std::string& textureFile);
 
         void checkCollision();
-        void setNewPlatformGenerated(bool estado){
-            _nuevaPlataformaGenerada = estado;
-        }
-         bool isNewPlatformGenerated() const{
-             return _nuevaPlataformaGenerada;}
-
 };

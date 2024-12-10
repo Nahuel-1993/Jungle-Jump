@@ -50,6 +50,8 @@
 		<Unit filename="Banana.h" />
 		<Unit filename="Camu.cpp" />
 		<Unit filename="Camu.h" />
+		<Unit filename="CapturarNombre.cpp" />
+		<Unit filename="CapturarNombre.h" />
 		<Unit filename="Collisionable.cpp" />
 		<Unit filename="Collisionable.h" />
 		<Unit filename="Fruta.cpp" />
@@ -57,6 +59,8 @@
 		<Unit filename="Gameplay.h" />
 		<Unit filename="Maracuya.cpp" />
 		<Unit filename="Maracuya.h" />
+		<Unit filename="MenuSFML.cpp" />
+		<Unit filename="MenuSFML.h" />
 		<Unit filename="Personaje.cpp" />
 		<Unit filename="Personaje.h" />
 		<Unit filename="Plataforma.cpp" />

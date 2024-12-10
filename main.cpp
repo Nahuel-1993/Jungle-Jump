@@ -104,29 +104,36 @@ int main()
     std::vector<Plataforma> plataformas; ///Usamos push_back para añadir elementos al final del vector
    const float ancho = 100.f;
    const float alto=20.f;
-   const float distanciaMinima = 70.f;
+   const float distanciaMinima = 100.f;
 
-    float xAleatorio = rand() % 500 + 70;
-    float yAleatorio = 50; ///Lo dejamos fijo así las plataformas no aparecen a mitad de la pantalla
-    plataformas.push_back(Plataforma(xAleatorio, yAleatorio, ancho, alto));
-
-    for(auto& plataforma : plataformas){
-        plataforma.update();
-    for (int i = 0; i < 2; ++i) {
+    for (int i = 0; i < 3; ++i) {
         float xAleatorio = rand() % 700 + 50;
-        float yAleatorio = rand() % 100 + 50;
+        float yAleatorio; //= rand() % 100 + 50;
 
-        if (i > 0) {
-            while (yAleatorio < plataformas[i-1].getBounds().top + 100) {
-                yAleatorio = rand() % 200 + 50;
+        do{
+            yAleatorio = rand() % 400 + 50;
+            bool solapado = false;
+
+            for(const auto& plataforma:plataformas){
+                if(abs(yAleatorio - plataforma.getBounds().top) < distanciaMinima){
+                    solapado = true;
+                    break;
+                }
             }
+        if (!solapado){
+        plataformas.push_back(Plataforma(xAleatorio, yAleatorio, ancho, alto));
         }
+    }while (plataformas.size() < i +1);
     }
-    }
-
     for (auto& plataforma : plataformas) {
         plataforma.setTexture("plataforma.png");
     }
+    if (!plataformas.empty()) {
+    // Suponiendo que quieres que Alan inicie en la primera plataforma
+    float xInicial = plataformas[0].getDraw().getPosition().x + (ancho / 2); // Centrar en la plataforma
+    float yInicial = plataformas[0].getDraw().getPosition().y - alan.getDraw().getGlobalBounds().height; // Justo encima de la plataforma
+    alan.getSprite().setPosition(xInicial, yInicial);
+}
 
     ///Game Loop (update del juego) *Se subdivide internamente*
     gameplay(window, alan, frutas, frutaActual, indiceFrutaActual, relojRespawn, enRespawn, puntos, sound, text, image, music, plataformas, vidas);

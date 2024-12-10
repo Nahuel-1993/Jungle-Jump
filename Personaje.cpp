@@ -33,15 +33,17 @@ void Personaje::cmd() {
         }
     }
 }
-bool enPlataforma = false;
+bool enPlataforma;
 
 void Personaje::update() {
-    enPlataforma = false;
 
     switch (_estado) {
         case QUIETO:
-            _velocidadSalto -= 0.5; // Aplicando gravedad
+            //std::cout<<"EN QUIETO"<< enPlataforma << std::endl;
+            if(!enPlataforma){
+            _velocidadSalto -= 0.5; /// Aplicamos gravedad
             _sprite.move(0, -_velocidadSalto);
+            }
             if (_sprite.getPosition().y >= 600) { ///Si el personaje está en el piso
                 _sprite.setPosition(_sprite.getPosition().x, 600);
                 _velocidadSalto = 0;
@@ -114,7 +116,7 @@ void Personaje::update() {
         _sprite.setPosition(800 - (_sprite.getGlobalBounds().width - _sprite.getOrigin().x), _sprite.getPosition().y);
     }
     if (_sprite.getGlobalBounds().top + _sprite.getGlobalBounds().height > 600) {
-        _sprite.setPosition(_sprite.getPosition().x, 600 + (_sprite.getGlobalBounds().height - _sprite.getOrigin().y));
+        _sprite.setPosition(_sprite.getPosition().x, 550 + (_sprite.getGlobalBounds().height - _sprite.getOrigin().y));
     }
 
 }

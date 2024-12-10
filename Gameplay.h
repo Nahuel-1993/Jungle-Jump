@@ -60,7 +60,8 @@ void gameplay(sf::RenderWindow& window, Personaje& alan, std::vector<Fruta*>& fr
                 alan.setEstado(QUIETO);
                 alan.enPlataforma = true;
                 }
-               }
+                //std::cout<<"EN gameplay"<< alan.enPlataforma << std::endl;
+                }
 
         window.clear(); // Borra la pantalla para evitar que los objetos se sobrepongan
 
