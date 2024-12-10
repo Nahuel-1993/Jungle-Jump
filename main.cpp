@@ -36,6 +36,11 @@ int main()
         window.clear();
         menu.draw(window);
         window.display();
+
+        if (op == 2){
+            menu.mostrarCreditos(window);
+            op = -1; //Se resetea la opcion para volver al menu
+        }
     }
 
     /// Detener la música del menú antes de comenzar el gameplay
