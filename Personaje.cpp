@@ -34,7 +34,7 @@ void Personaje::cmd() {
         }
     }
 }
-bool enPlataforma;
+bool enPlataforma = false;
 
 void Personaje::update() {
 
@@ -49,7 +49,8 @@ void Personaje::update() {
                 _sprite.setPosition(_sprite.getPosition().x, 600);
                 _velocidadSalto = 0;
                 _estado = ESTADOS_PERSONAJE::QUIETO;
-                _vidas.perderVida(); /// Perdemos una vida al tocar el piso
+                //_vidas.perderVida();
+                //std::cout<<"Alan está en el piso en personaje.cpp"<<std::endl;
             }
             break;
         case CAMINANDO_ADELANTE:
@@ -147,3 +148,9 @@ void Personaje::setVelocidadSalto(float velocidad) {
     float Personaje::getVelocidadSalto() const {
     return _velocidadSalto; ///Devolvemos la velocidad de salto para la colision de plataformas
     }
+int Personaje::getVidas() const {
+    return _vidas.getVidas();
+}
+void Personaje::perderVida() {
+    _vidas.perderVida();
+}

@@ -11,6 +11,18 @@ void gameplay(sf::RenderWindow& window, Personaje& alan, std::vector<Fruta*>& fr
               sf::Sound& sound, sf::Text& text, sf::Sprite& image, sf::Music& music,
               std::vector<Plataforma>& plataformas, Vidas& vidas) {
 
+    sf::Clock reloj; // Reloj para medir deltaTime
+    sf::Font font;
+    font.loadFromFile("pixel.ttf");
+
+    ///Creamos el GAMEOVER
+    sf::Text gameOverText;
+    gameOverText.setFont(font);
+    gameOverText.setCharacterSize(50);
+    gameOverText.setFillColor(sf::Color::Red);
+    gameOverText.setString("GAME OVER");
+    gameOverText.setPosition(150, 150);
+
     // Crear el objeto de texto para mostrar el nombre, los puntos y las vidas
     sf::Text nombrePuntosVidasTexto;
     nombrePuntosVidasTexto.setFont(*text.getFont());
@@ -19,11 +31,23 @@ void gameplay(sf::RenderWindow& window, Personaje& alan, std::vector<Fruta*>& fr
     nombrePuntosVidasTexto.setPosition(10, 4);
 
     while (window.isOpen()) {
+            //float deltaTime = reloj.restart().asSeconds();
         // 1° Read input - Actualiza los estados de los periféricos de entrada. ↓
         sf::Event event;
         while (window.pollEvent(event)) {
             if (event.type == sf::Event::Closed)
                 window.close();
+        }
+        ///vERIFICAMOS LAS VIDAS
+        if (vidas.getVidas() <= 0) {
+            window.clear();
+            window.draw(image); // Dibuja el fondo
+            window.draw(gameOverText); // Muestra el mensaje de "Game Over"
+            window.display();
+
+            sf::sleep(sf::seconds(3)); // Pausa para que el jugador vea el mensaje
+            window.close();
+            break;
         }
 
         // 2° CMD (Leemos que se apretó y lo ejecutamos)
@@ -37,6 +61,7 @@ void gameplay(sf::RenderWindow& window, Personaje& alan, std::vector<Fruta*>& fr
         std::string nombrePuntosVidas = std::string(puntos.getNombre()) +
                                         "  Puntos: " + std::to_string(puntos.getPuntos()) +
                                         "\nVidas: " + std::to_string(vidas.getVidas());
+                                        nombrePuntosVidasTexto.setString(nombrePuntosVidas);
 
         nombrePuntosVidasTexto.setString(nombrePuntosVidas);  // Actualizo el texto con el nombre, puntos y vidas
 
@@ -59,7 +84,19 @@ void gameplay(sf::RenderWindow& window, Personaje& alan, std::vector<Fruta*>& fr
                 alan.getSprite().setPosition(nuevaPosicion);///Actualizamos la posición a la posición de la plataforma
                 alan.setEstado(QUIETO);
                 alan.enPlataforma = true;
-                }
+                break;
+            }
+                    if (alan.getSprite().getPosition().y >= 600 && vidas.getVidas() >0) {
+                            //std::cout<<"Alan está en el piso en gameplay.h"<<std::endl;
+                            vidas.perderVida(); ///Restamos una vida
+                            sf::Vector2f nuevaPosicion = plataformas[0].getDraw().getPosition();
+                            nuevaPosicion.y -= alan.getDraw().getGlobalBounds().height;
+                            alan.getSprite().setPosition(nuevaPosicion);
+                            alan.setVelocidadSalto(0);
+                            alan.setEstado(QUIETO);
+                            alan.enPlataforma = true;
+                            }
+
                 //std::cout<<"EN gameplay"<< alan.enPlataforma << std::endl;
                 }
 
@@ -90,5 +127,5 @@ void gameplay(sf::RenderWindow& window, Personaje& alan, std::vector<Fruta*>& fr
 
         // 5° Display - Flip (actualiza la ventana)
         window.display();
-    }
  }
+}

@@ -107,8 +107,8 @@ int main()
    const float distanciaMinima = 100.f;
 
     for (int i = 0; i < 3; ++i) {
-        float xAleatorio = rand() % 700 + 50;
-        float yAleatorio; //= rand() % 100 + 50;
+        float xAleatorio = rand() % 500 + 70;
+        float yAleatorio;
 
         do{
             yAleatorio = rand() % 400 + 50;

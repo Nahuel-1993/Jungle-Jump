@@ -38,4 +38,6 @@ public:
     void setVelocidadSalto(float velocidad);
     float getVelocidadSalto() const;
     bool enPlataforma;
+    int getVidas() const;
+    void perderVida();
 };

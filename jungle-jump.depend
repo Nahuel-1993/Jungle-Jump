@@ -2883,7 +2883,7 @@
 1730951765 source:c:\users\ccfrgp\documents\jungle-jump2prueba\jungle-jump\fruta.cpp
 	"Fruta.h"
 
-1733808054 source:c:\users\ccfrgp\documents\jungle-jump2prueba\jungle-jump\main.cpp
+1733835583 source:c:\users\ccfrgp\documents\jungle-jump2prueba\jungle-jump\main.cpp
 	<SFML/Graphics.hpp>
 	<SFML/Audio.hpp>
 	<stdlib.h>
@@ -3029,7 +3029,7 @@
 	<iostream>
 	<cstring>
 
-1733808367 c:\users\ccfrgp\documents\jungle-jump2prueba\jungle-jump\personaje.h
+1733813001 c:\users\ccfrgp\documents\jungle-jump2prueba\jungle-jump\personaje.h
 	<SFML\Graphics.hpp>
 	"Collisionable.h"
 	"Plataforma.h"
@@ -3040,7 +3040,7 @@
 
 1730948091 c:\users\ccfrgp\documents\jungle-jump2prueba\jungle-jump\respawnfruta.h
 
-1733805302 c:\users\ccfrgp\documents\jungle-jump2prueba\jungle-jump\gameplay.h
+1733839889 c:\users\ccfrgp\documents\jungle-jump2prueba\jungle-jump\gameplay.h
 	<SFML/Graphics.hpp>
 	<SFML/Audio.hpp>
 	<vector>
@@ -3057,7 +3057,7 @@
 	"Maracuya.h"
 	<stdlib.h>
 
-1733808350 source:c:\users\ccfrgp\documents\jungle-jump2prueba\jungle-jump\personaje.cpp
+1733838764 source:c:\users\ccfrgp\documents\jungle-jump2prueba\jungle-jump\personaje.cpp
 	"Personaje.h"
 	"Plataforma.h"
 	<iostream>
@@ -3114,7 +3114,8 @@
 	<SFML/Graphics.hpp>
 	<string>
 
-1733795392 c:\users\ccfrgp\documents\jungle-jump2prueba\jungle-jump\vidas.h
+1733837943 c:\users\ccfrgp\documents\jungle-jump2prueba\jungle-jump\vidas.h
+	<iostream>
 
 1733795392 source:c:\users\ccfrgp\documents\jungle-jump2prueba\jungle-jump\menusfml.cpp
 	"MenuSFML.h"

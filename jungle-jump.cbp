@@ -66,6 +66,7 @@
 		<Unit filename="Plataforma.cpp" />
 		<Unit filename="Plataforma.h" />
 		<Unit filename="RespawnFruta.h" />
+		<Unit filename="Vidas.h" />
 		<Unit filename="main.cpp" />
 		<Extensions>
 			<lib_finder disable_auto="1" />
