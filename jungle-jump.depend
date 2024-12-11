@@ -2883,7 +2883,7 @@
 1730951765 source:c:\users\ccfrgp\documents\jungle-jump2prueba\jungle-jump\fruta.cpp
 	"Fruta.h"
 
-1733841821 source:c:\users\ccfrgp\documents\jungle-jump2prueba\jungle-jump\main.cpp
+1733910816 source:c:\users\ccfrgp\documents\jungle-jump2prueba\jungle-jump\main.cpp
 	<SFML/Graphics.hpp>
 	<SFML/Audio.hpp>
 	<stdlib.h>
@@ -2902,6 +2902,7 @@
 	<iostream>
 	"Plataforma.h"
 	<cstdlib>
+	"ArchivoEstadistica.h"
 
 1730948062 c:\users\ccfrgp\documents\jungle-jump2prueba\jungle-jump\sfml-2.6.1\include\sfml\audio.hpp
 	<SFML/System.hpp>
@@ -3040,7 +3041,7 @@
 
 1730948091 c:\users\ccfrgp\documents\jungle-jump2prueba\jungle-jump\respawnfruta.h
 
-1733843508 c:\users\ccfrgp\documents\jungle-jump2prueba\jungle-jump\gameplay.h
+1733895302 c:\users\ccfrgp\documents\jungle-jump2prueba\jungle-jump\gameplay.h
 	<SFML/Graphics.hpp>
 	<SFML/Audio.hpp>
 	<vector>
@@ -3048,6 +3049,7 @@
 	"Fruta.h"
 	"Puntos.h"
 	"Plataforma.h"
+	"ArchivoEstadistica.h"
 
 1733800837 c:\users\ccfrgp\documents\jungle-jump2prueba\jungle-jump\plataforma.h
 	<SFML/Graphics.hpp>
@@ -3104,11 +3106,12 @@
 
 1733693363 c:\users\nahue\onedrive\documentos\utn\materias\programacion\prog-2\tp-final\jungle-jump\vidas.h
 
-1733795392 c:\users\ccfrgp\documents\jungle-jump2prueba\jungle-jump\menusfml.h
+1733911280 c:\users\ccfrgp\documents\jungle-jump2prueba\jungle-jump\menusfml.h
 	<SFML/Graphics.hpp>
 	<SFML/Audio.hpp>
 	<vector>
 	<string>
+	"ArchivoEstadistica.h"
 
 1733795391 c:\users\ccfrgp\documents\jungle-jump2prueba\jungle-jump\capturarnombre.h
 	<SFML/Graphics.hpp>
@@ -3117,9 +3120,19 @@
 1733837943 c:\users\ccfrgp\documents\jungle-jump2prueba\jungle-jump\vidas.h
 	<iostream>
 
-1733795392 source:c:\users\ccfrgp\documents\jungle-jump2prueba\jungle-jump\menusfml.cpp
+1733912022 source:c:\users\ccfrgp\documents\jungle-jump2prueba\jungle-jump\menusfml.cpp
 	"MenuSFML.h"
+	"ArchivoEstadistica.h"
 
 1733795391 source:c:\users\ccfrgp\documents\jungle-jump2prueba\jungle-jump\capturarnombre.cpp
 	"CapturarNombre.h"
+
+1733911717 source:c:\users\ccfrgp\documents\jungle-jump2prueba\jungle-jump\archivoestadistica.cpp
+	"ArchivoEstadistica.h"
+	<iostream>
+	<fstream>
+	<cstring>
+
+1733910433 c:\users\ccfrgp\documents\jungle-jump2prueba\jungle-jump\archivoestadistica.h
+	<iostream>
 

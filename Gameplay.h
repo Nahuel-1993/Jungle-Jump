@@ -5,14 +5,14 @@
 #include "Fruta.h"
 #include "Puntos.h"
 #include "Plataforma.h"
+#include "ArchivoEstadistica.h"
 
 void gameplay(sf::RenderWindow& window, Personaje& alan, std::vector<Fruta*>& frutas, Fruta*& frutaActual,
               int& indiceFrutaActual, sf::Clock& relojRespawn, bool& enRespawn, Puntos& puntos,
               sf::Sound& sound, sf::Text& text, sf::Sprite& image, sf::Music& music,
-              std::vector<Plataforma>& plataformas, Vidas& vidas, bool& gameRunning) {
+              std::vector<Plataforma>& plataformas, Vidas& vidas, bool& gameRunning, sf::Font& font,ArchivoEstadistica& estadistica, const std::string& nombreJugador) {
 
     sf::Clock reloj; // Reloj para medir deltaTime
-    sf::Font font;
     font.loadFromFile("pixel.ttf");
 
     ///Creamos el GAMEOVER
@@ -41,25 +41,13 @@ void gameplay(sf::RenderWindow& window, Personaje& alan, std::vector<Fruta*>& fr
 
     while (window.isOpen() && gameRunning) {
             //float deltaTime = reloj.restart().asSeconds();
-        // 1° Read input - Actualiza los estados de los periféricos de entrada. ↓
+            // 1° Read input - Actualiza los estados de los periféricos de entrada.
         sf::Event event;
         while (window.pollEvent(event)) {
-            if (event.type == sf::Event::Closed)
+            if (event.type == sf::Event::Closed){
                 window.close();
-                ///Si presiona enter volvemos al menú principal
-                if (vidas.getVidas() <= 0 && event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::Enter) {
-                  gameRunning = false;
-                  return; ///SALIMOS Y VOLVEMOS AL MENÚ
-                }
-        }
-        ///vERIFICAMOS LAS VIDAS
-        if (vidas.getVidas() <= 0) {
-            window.clear();
-            window.draw(image);
-            window.draw(gameOverText); /// Dibujamos el GAME OVER
-            window.draw(volverMenu); /// DIBUJAMOS EL VOLVER MENU
-            window.display();
-            continue;
+                return;
+            }
         }
 
         // 2° CMD (Leemos que se apretó y lo ejecutamos)
@@ -110,7 +98,28 @@ void gameplay(sf::RenderWindow& window, Personaje& alan, std::vector<Fruta*>& fr
                             }
 
                 //std::cout<<"EN gameplay"<< alan.enPlataforma << std::endl;
+        }
+        ///vERIFICAMOS LAS VIDAS
+        if (vidas.getVidas() <= 0) {
+        gameRunning = false;
+        while (true) {
+            while (window.pollEvent(event)) {
+                if (event.type == sf::Event::Closed) {
+                    window.close();
+                    return;
                 }
+                if (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::Enter) {
+                    return; /// VOLVEMOS AL MENÚ
+                }
+            }
+
+            window.clear();
+            window.draw(image);
+            window.draw(gameOverText);   /// pintamos el GAME OVER
+            window.draw(volverMenu);     /// VOLVER MENÚ
+            window.display();
+        }
+    }
 
         window.clear(); // Borra la pantalla para evitar que los objetos se sobrepongan
 
@@ -136,6 +145,10 @@ void gameplay(sf::RenderWindow& window, Personaje& alan, std::vector<Fruta*>& fr
 
         // Dibujar el nombre, los puntos y las vidas
         window.draw(nombrePuntosVidasTexto);
+
+        ///Almacenamos eestadisticas
+        estadistica.setDatos(nombreJugador.c_str(), puntos.getPuntos());
+        estadistica.grabarRegistroEstadistica();
 
         // 5° Display - Flip (actualiza la ventana)
         window.display();

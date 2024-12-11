@@ -1,4 +1,5 @@
 #include "MenuSFML.h"
+#include "ArchivoEstadistica.h"
 
 MenuSFML::MenuSFML() : seleccion(0), textoOpciones{"JUGAR", "ESTADISTICA", "CREDITOS", "SALIR"} {
     font.loadFromFile("pixel.ttf");
@@ -53,7 +54,7 @@ void MenuSFML::handleInput(sf::RenderWindow& window, int& op) {
                 if (seleccion == 0) {
                     op = 0; // JUGAR
                 } else if (seleccion == 1) {
-                    op = 1; // ESTADISTICA
+                    op = -1; // ESTADISTICA
                 } else if (seleccion == 2) {
                     op = 2; // CREDITOS
                 } else if (seleccion == 3) {
@@ -91,6 +92,15 @@ void MenuSFML::mostrarCreditos(sf::RenderWindow& window) {
         window.draw(creditsText);
         window.display();
     }
+}
+
+void MenuSFML::mostrarEstadistica(sf::RenderWindow& window, ArchivoEstadistica& estadistica, sf::Font& font) {
+        sf::Text estadisticasText;
+        estadisticasText.setFont(font);
+        estadisticasText.setString("ESTADISTICAS: \n");
+        estadisticasText.setCharacterSize(15);
+        estadisticasText.setFillColor(sf::Color::White);
+        estadisticasText.setPosition(50, 50);
 }
 
 void MenuSFML::stopMusic() {

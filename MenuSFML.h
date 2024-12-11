@@ -3,6 +3,8 @@
 #include <SFML/Audio.hpp>
 #include <vector>
 #include <string>
+#include "ArchivoEstadistica.h"
+
 
 class MenuSFML {
 public:
@@ -13,6 +15,7 @@ public:
     void setMusic(const std::string& musicFilePath);
     void stopMusic();
     void mostrarCreditos(sf::RenderWindow& window);
+    void mostrarEstadistica(sf::RenderWindow& window,ArchivoEstadistica& estadistica, sf::Font& font); //ArchivoEstadistica& estadistica,
 
 
 private:

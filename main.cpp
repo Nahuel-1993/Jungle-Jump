@@ -16,22 +16,29 @@
 #include <iostream>
 #include "Plataforma.h"
 #include <cstdlib>
+#include "ArchivoEstadistica.h"
 
 int main()
 {
     std::srand((unsigned)std::time(0));
     bool gameRunning;
 
-    int op = 1;
-
-    ///Inicializacion de la ventana
+        ///Inicializacion de la ventana
     sf::RenderWindow window(sf::VideoMode(800, 600), "Jungle Jump");
     window.setFramerateLimit(60);
+
+    sf::Font font;
+    font.loadFromFile("pixel.ttf");
 
     MenuSFML menu;
     menu.setBackground("FondoMenu.png"); // Establecer la imagen de fondo del menú
     menu.setMusic("Menu.wav");
+    ///Declaramos estadisticas
+    ArchivoEstadistica estadistica;
+    estadistica.grabarRegistroEstadistica();
 
+
+    int op = 4;
     while (window.isOpen()){
     while (op != 0 && window.isOpen()) {
         menu.handleInput(window, op);
@@ -39,6 +46,11 @@ int main()
         menu.draw(window);
         window.display();
 
+        if (op==1){
+            menu.mostrarEstadistica(window, estadistica, font);
+            op = -1;
+
+        }
         if (op == 2){
             menu.mostrarCreditos(window);
             op = -1; //Se resetea la opcion para volver al menu
@@ -87,6 +99,8 @@ int main()
     frutaActual->respawn();
 
     /// Crea el reloj para controlar el tiempo de respawn
+
+
     sf::Clock relojRespawn;
     bool enRespawn = false;
 
@@ -129,7 +143,7 @@ int main()
         if (!solapado){
         plataformas.push_back(Plataforma(xAleatorio, yAleatorio, ancho, alto));
         }
-    }while (plataformas.size() < i +1);
+        }while (plataformas.size() < i +1);
     }
     for (auto& plataforma : plataformas) {
         plataforma.setTexture("plataforma.png");
@@ -141,10 +155,25 @@ int main()
     alan.getSprite().setPosition(xInicial, yInicial);
 }
 
-    ///Game Loop (update del juego) *Se subdivide internamente*
-    gameplay(window, alan, frutas, frutaActual, indiceFrutaActual, relojRespawn, enRespawn, puntos, sound, text, image, music, plataformas, vidas, gameRunning);
+    ///Estadistica
+    //estadistica.setDatos(nombreJugador.c_str(), puntos.getPuntos());
+    estadistica.setDatos(nombreJugador.c_str(), puntos.getPuntos());
 
-    op = 1;
+    /*std::string str = leerRegistroEstadistica();
+    if (!str.empty)) {
+        std::cerr << "Error al guardar la estadística." << std::endl;
+    }
+    //std::cout << "Estadísticas guardadas:" << std::endl;
+    estadistica.leerRegistroEstadistica();
+
+    if (!str.empty)) {
+        std::cerr << "Error al leer el archivo de estadísticas." << std::endl;
+    }*/
+
+    ///Game Loop (update del juego) *Se subdivide internamente*
+    gameplay(window, alan, frutas, frutaActual, indiceFrutaActual, relojRespawn, enRespawn, puntos, sound, text, image, music, plataformas, vidas, gameRunning, font, estadistica, nombreJugador);
+
+    op = 4;
     menu.setMusic("Menu.wav");
     }
 
