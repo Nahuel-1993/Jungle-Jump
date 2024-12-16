@@ -22,7 +22,7 @@ void Plataforma::cmd()
 void Plataforma::setTexture(const std::string& texturefile)
 {
     if (!_texture.loadFromFile(texturefile)) {
-        std::cerr << "Error al cargar la textura de la plataforma: " << texturefile << std::endl;
+        std::cout << "Error al cargar la textura de la plataforma: " << texturefile << std::endl;
     }
     _sprite.setTexture(_texture);
     _sprite.setPosition(_shape.getPosition());
