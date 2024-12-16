@@ -17,6 +17,7 @@
 #include "Plataforma.h"
 #include <cstdlib>
 
+
 int main()
 {
     std::srand((unsigned)std::time(0));

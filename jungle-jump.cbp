@@ -35,14 +35,14 @@
 		<Compiler>
 			<Add option="-Wall" />
 			<Add option="-fexceptions" />
-			<Add directory="SFML-2.6.1/include" />
+			<Add directory="../../GitHub/github-jungle-jumpSOLOUSARlib-include/SFML-2.6.1/include" />
 		</Compiler>
 		<Linker>
 			<Add library="sfml-graphics" />
 			<Add library="sfml-window" />
 			<Add library="sfml-system" />
 			<Add library="sfml-audio" />
-			<Add directory="SFML-2.6.1/lib" />
+			<Add directory="../../GitHub/github-jungle-jumpSOLOUSARlib-include/SFML-2.6.1/lib" />
 		</Linker>
 		<Unit filename="ArchivoEstadistica.cpp" />
 		<Unit filename="ArchivoEstadistica.h" />
