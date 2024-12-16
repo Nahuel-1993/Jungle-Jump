@@ -13,6 +13,7 @@ public:
     void setMusic(const std::string& musicFilePath);
     void stopMusic();
     void mostrarCreditos(sf::RenderWindow& window);
+    void mostrarEstadistica(sf::RenderWindow& window);
 
 
 private:

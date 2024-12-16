@@ -1601,7 +1601,7 @@
 	<SFML/Graphics.hpp>
 	"Collisionable.h"
 
-1733792934 source:c:\users\nahue\onedrive\documentos\utn\materias\programacion\prog-2\tp-final\jungle-jump\main.cpp
+1734383322 source:c:\users\nahue\onedrive\documentos\utn\materias\programacion\prog-2\tp-final\jungle-jump\main.cpp
 	<SFML/Graphics.hpp>
 	<SFML/Audio.hpp>
 	<stdlib.h>
@@ -1725,9 +1725,11 @@
 	<SFML/Audio/Export.hpp>
 	<string>
 
-1732717819 c:\users\nahue\onedrive\documentos\utn\materias\programacion\prog-2\tp-final\jungle-jump\personaje.h
+1734317677 c:\users\nahue\onedrive\documentos\utn\materias\programacion\prog-2\tp-final\jungle-jump\personaje.h
 	<SFML\Graphics.hpp>
 	"Collisionable.h"
+	"Plataforma.h"
+	"Vidas.h"
 
 1732717819 c:\users\nahue\onedrive\documentos\utn\materias\programacion\prog-2\tp-final\jungle-jump\banana.h
 	"Fruta.h"
@@ -1743,7 +1745,7 @@
 
 1732717819 c:\users\nahue\onedrive\documentos\utn\materias\programacion\prog-2\tp-final\jungle-jump\respawnfruta.h
 
-1733791990 c:\users\nahue\onedrive\documentos\utn\materias\programacion\prog-2\tp-final\jungle-jump\gameplay.h
+1734382942 c:\users\nahue\onedrive\documentos\utn\materias\programacion\prog-2\tp-final\jungle-jump\gameplay.h
 	<SFML/Graphics.hpp>
 	<SFML/Audio.hpp>
 	<vector>
@@ -1751,6 +1753,8 @@
 	"Fruta.h"
 	"Puntos.h"
 	"Plataforma.h"
+	"RespawnFruta.h"
+	"ArchivoEstadistica.h"
 
 1730472625 c:\users\nahue\onedrive\documentos\utn\materias\programacion\prog-2\tp-final\jungle-jump\rlutil.h
 	<iostream>
@@ -1766,8 +1770,11 @@
 	<sys/types.h>
 	<sys/time.h>
 
-1732717819 source:c:\users\nahue\onedrive\documentos\utn\materias\programacion\prog-2\tp-final\jungle-jump\personaje.cpp
+1734317677 source:c:\users\nahue\onedrive\documentos\utn\materias\programacion\prog-2\tp-final\jungle-jump\personaje.cpp
 	"Personaje.h"
+	"Plataforma.h"
+	"Vidas.h"
+	<iostream>
 
 1732717819 source:c:\users\nahue\onedrive\documentos\utn\materias\programacion\prog-2\tp-final\jungle-jump\bacaba.cpp
 	"Bacaba.h"
@@ -2435,25 +2442,27 @@
 	<SFML/Graphics.hpp>
 	"Collisionable.h"
 
-1732717819 c:\users\nahue\onedrive\documentos\utn\materias\programacion\prog-2\tp-final\jungle-jump\plataforma.h
+1734317677 c:\users\nahue\onedrive\documentos\utn\materias\programacion\prog-2\tp-final\jungle-jump\plataforma.h
 	<SFML/Graphics.hpp>
 	"Collisionable.h"
 
-1732717819 source:c:\users\nahue\onedrive\documentos\utn\materias\programacion\prog-2\tp-final\jungle-jump\plataforma.cpp
+1734381150 source:c:\users\nahue\onedrive\documentos\utn\materias\programacion\prog-2\tp-final\jungle-jump\plataforma.cpp
 	"Plataforma.h"
 	<SFML/Graphics.hpp>
 	<cstdlib>
 	<ctime>
 	<iostream>
+	"Personaje.h"
 
-1733792977 c:\users\nahue\onedrive\documentos\utn\materias\programacion\prog-2\tp-final\jungle-jump\menusfml.h
+1734382468 c:\users\nahue\onedrive\documentos\utn\materias\programacion\prog-2\tp-final\jungle-jump\menusfml.h
 	<SFML/Graphics.hpp>
 	<SFML/Audio.hpp>
 	<vector>
 	<string>
 
-1733793679 source:c:\users\nahue\onedrive\documentos\utn\materias\programacion\prog-2\tp-final\jungle-jump\menusfml.cpp
+1734382919 source:c:\users\nahue\onedrive\documentos\utn\materias\programacion\prog-2\tp-final\jungle-jump\menusfml.cpp
 	"MenuSFML.h"
+	"ArchivoEstadistica.h"
 
 1733601533 source:c:\users\nahue\onedrive\documentos\utn\materias\programacion\prog-2\tp-final\jungle-jump\capturarnombre.cpp
 	"CapturarNombre.h"
@@ -5220,5 +5229,15 @@
 
 1730412134 c:\users\ccfrgp\documents\github\github-jungle-jumpsolousarlib-include\sfml-2.6.1\include\sfml\audio\soundfilewriter.hpp
 	<SFML/Audio/Export.hpp>
+	<string>
+
+1734383159 source:c:\users\nahue\onedrive\documentos\utn\materias\programacion\prog-2\tp-final\jungle-jump\archivoestadistica.cpp
+	"ArchivoEstadistica.h"
+	<iostream>
+	<fstream>
+	<cstring>
+
+1734381150 c:\users\nahue\onedrive\documentos\utn\materias\programacion\prog-2\tp-final\jungle-jump\archivoestadistica.h
+	<iostream>
 	<string>
 

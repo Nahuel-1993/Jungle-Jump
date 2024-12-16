@@ -1,4 +1,5 @@
 #include "MenuSFML.h"
+#include "ArchivoEstadistica.h"
 
 MenuSFML::MenuSFML() : seleccion(0), textoOpciones{"JUGAR", "ESTADISTICA", "CREDITOS", "SALIR"} {
     font.loadFromFile("pixel.ttf");
@@ -92,6 +93,49 @@ void MenuSFML::mostrarCreditos(sf::RenderWindow& window) {
         window.display();
     }
 }
+
+void MenuSFML::mostrarEstadistica(sf::RenderWindow& window) {
+    sf::Text estadisticaTexto;
+    estadisticaTexto.setFont(font);
+    estadisticaTexto.setCharacterSize(18);
+    estadisticaTexto.setFillColor(sf::Color::White);
+    estadisticaTexto.setPosition(50, 100);
+
+    std::string estadisticas = "Estadísticas de Jugadores:\n\n";
+
+    // Leer estadísticas desde ArchivoEstadistica
+    ArchivoEstadistica archivo;
+    std::string datos = archivo.leerRegistroEstadistica();
+
+    if (datos == "false") {
+        estadisticas += "No hay estadísticas registradas.";
+    } else {
+        estadisticas += datos;
+    }
+
+    estadisticaTexto.setString(estadisticas);
+
+    // Mostrar estadísticas en pantalla
+    while (window.isOpen()) {
+        sf::Event event;
+        while (window.pollEvent(event)) {
+            if (event.type == sf::Event::Closed) {
+                window.close();
+                return;
+            }
+
+            // Salir de estadísticas con Enter o cualquier tecla
+            if (event.type == sf::Event::KeyPressed) {
+                return; // Volver al menú principal
+            }
+        }
+
+        window.clear();
+        window.draw(estadisticaTexto);
+        window.display();
+    }
+}
+
 
 void MenuSFML::stopMusic() {
     menuMusic.stop();
