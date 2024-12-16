@@ -1,4 +1,7 @@
 #include "Personaje.h"
+#include "Plataforma.h"
+#include "Vidas.h"
+#include <iostream>
 
 Personaje::Personaje()
 {
@@ -33,14 +36,23 @@ void Personaje::cmd() {
 }
 
 
+bool enPlataforma = false;
+
 void Personaje::update() {
+
     switch (_estado) {
         case QUIETO:
-            _velocidadSalto -= 0.5; // Aplicando gravedad
+            //std::cout<<"EN QUIETO"<< enPlataforma << std::endl;
+            if(!enPlataforma){
+            _velocidadSalto -= 0.5; /// Aplicamos gravedad
             _sprite.move(0, -_velocidadSalto);
-            if (_sprite.getPosition().y >= 600) {
+            }
+            if (_sprite.getPosition().y >= 600) { ///Si el personaje está en el piso
                 _sprite.setPosition(_sprite.getPosition().x, 600);
                 _velocidadSalto = 0;
+                _estado = ESTADOS_PERSONAJE::QUIETO;
+                //_vidas.perderVida();
+                //std::cout<<"Alan está en el piso en personaje.cpp"<<std::endl;
             }
             break;
         case CAMINANDO_ADELANTE:
@@ -94,6 +106,9 @@ void Personaje::update() {
         default:
             break;
     }
+    if (enPlataforma){
+        _sprite.move(0, 2);
+    }
 
     //Para evitar que salga de la pantalla:
     if (_sprite.getGlobalBounds().left < 0) {
@@ -110,6 +125,9 @@ void Personaje::update() {
     }
 }
 
+void Personaje::setEstado(ESTADOS_PERSONAJE nuevoEstado) {
+    _estado = nuevoEstado;
+}
 
 void Personaje::draw(sf::RenderTarget& target, sf::RenderStates states) const {
     target.draw(_sprite, states);
@@ -118,3 +136,22 @@ void Personaje::draw(sf::RenderTarget& target, sf::RenderStates states) const {
  sf::FloatRect Personaje::getBounds() const {
     return _sprite.getGlobalBounds(); //Hacemos un get de globalBounds porque devuelve un FloatRect que es lo
 }                                     //que necesita getBounds()
+
+const sf::Sprite& Personaje::getDraw() const {
+    return _sprite;
+}
+sf::Sprite& Personaje::getSprite() {
+    return _sprite;
+}
+void Personaje::setVelocidadSalto(float velocidad) {
+    _velocidadSalto = velocidad;  ///Modificamos la velocidad de salto para arreglar la colisión con las plataformas
+    }
+    float Personaje::getVelocidadSalto() const {
+    return _velocidadSalto; ///Devolvemos la velocidad de salto para la colision de plataformas
+    }
+int Personaje::getVidas() const {
+    return _vidas.getVidas();
+}
+void Personaje::perderVida() {
+    _vidas.perderVida();
+}

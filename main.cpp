@@ -20,29 +20,41 @@
 int main()
 {
     std::srand((unsigned)std::time(0));
+    bool gameRunning;
 
-    int op = 1;
-
-    ///Inicializacion de la ventana
+      ///Inicializacion de la ventana
     sf::RenderWindow window(sf::VideoMode(800, 600), "Jungle Jump");
     window.setFramerateLimit(60);
+
+    sf::Font font;
+    font.loadFromFile("pixel.ttf");
 
     MenuSFML menu;
     menu.setBackground("FondoMenu.png"); // Establecer la imagen de fondo del menú
     menu.setMusic("Menu.wav");
 
+          int op = 4;
+    while (window.isOpen()){
     while (op != 0 && window.isOpen()) {
         menu.handleInput(window, op);
         window.clear();
         menu.draw(window);
         window.display();
 
+        /*if (op=1){
+            menu.mostrarEstadistica(window, )
+            op= -1;
+        }*/
+
         if (op == 2){
             menu.mostrarCreditos(window);
             op = -1; //Se resetea la opcion para volver al menu
         }
     }
-
+    if (op== 0){
+        gameRunning = true;
+        menu.stopMusic();
+    } //else { break;}
     /// Detener la música del menú antes de comenzar el gameplay
     menu.stopMusic();
 
@@ -100,29 +112,46 @@ int main()
     image.setTexture(tex);
 
     ///Plataformas aleatorias
-    std::vector<Plataforma> plataformas;
-    const float ancho = 100.f;
-    const float alto = 20.f;
+    std::vector<Plataforma> plataformas; ///Usamos push_back para añadir elementos al final del vector
+   const float ancho = 100.f;
+   const float alto=10.f;
+   const float distanciaMinima = 100.f;
 
-    for (int i = 0; i < 2; ++i) {
-        float xAleatorio = rand() % 700 + 50;
-        float yAleatorio = rand() % 100 + 50;
+    for (int i = 0; i < 3; ++i) {
+        float xAleatorio = rand() % 500 + 70;
+        float yAleatorio;
 
-        if (i > 0) {
-            while (yAleatorio < plataformas[i-1].getBounds().top + 100) {
-                yAleatorio = rand() % 200 + 50;
+        do{
+            yAleatorio = rand() % 400 + 50;
+            bool solapado = false;
+
+            for(const auto& plataforma:plataformas){
+                if(abs(yAleatorio - plataforma.getBounds().top) < distanciaMinima){
+                    solapado = true;
+                    break;
+                }
             }
-        }
-
+        if (!solapado){
         plataformas.push_back(Plataforma(xAleatorio, yAleatorio, ancho, alto));
+        }
+        }while (plataformas.size() < i +1);
     }
-
     for (auto& plataforma : plataformas) {
         plataforma.setTexture("plataforma.png");
     }
+    ///Alan inicia sobre una plataforma
+    if (!plataformas.empty()) {
+    float xInicial = plataformas[0].getDraw().getPosition().x + (ancho / 2); ///Centramos a alan respecto de las platafromas
+    float yInicial = plataformas[0].getDraw().getPosition().y - alan.getDraw().getGlobalBounds().height;
+    alan.getSprite().setPosition(xInicial, yInicial);
+    }
 
     ///Game Loop (update del juego) *Se subdivide internamente*
-    gameplay(window, alan, frutas, frutaActual, indiceFrutaActual, relojRespawn, enRespawn, puntos, sound, text, image, music, plataformas, vidas);
+    gameplay(window, alan, frutas, frutaActual, indiceFrutaActual, relojRespawn, enRespawn, puntos, sound, text, image, music, plataformas, vidas, gameRunning, font);
+
+    op = 4;
+    menu.setMusic("Menu.wav");
+    }
 
     return 0;
 }

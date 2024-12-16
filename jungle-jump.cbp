@@ -44,6 +44,8 @@
 			<Add library="sfml-audio" />
 			<Add directory="SFML-2.6.1/lib" />
 		</Linker>
+		<Unit filename="ArchivoEstadistica.cpp" />
+		<Unit filename="ArchivoEstadistica.h" />
 		<Unit filename="Bacaba.cpp" />
 		<Unit filename="Bacaba.h" />
 		<Unit filename="Banana.cpp" />
@@ -65,7 +67,9 @@
 		<Unit filename="Personaje.h" />
 		<Unit filename="Plataforma.cpp" />
 		<Unit filename="Plataforma.h" />
+		<Unit filename="Puntos.h" />
 		<Unit filename="RespawnFruta.h" />
+		<Unit filename="Vidas.h" />
 		<Unit filename="main.cpp" />
 		<Extensions>
 			<lib_finder disable_auto="1" />

@@ -25,4 +25,5 @@ class Plataforma
         void respawn();
         void setTexture(const std::string& textureFile);
 
+        void checkCollision();
 };
