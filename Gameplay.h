@@ -6,6 +6,7 @@
 #include "Puntos.h"
 #include "Plataforma.h"
 #include "RespawnFruta.h"
+#include "ArchivoEstadistica.h"
 
 void gameplay(sf::RenderWindow& window, Personaje& alan, std::vector<Fruta*>& frutas, Fruta*& frutaActual,
               int& indiceFrutaActual, sf::Clock& relojRespawn, bool& enRespawn, Puntos& puntos,
@@ -100,6 +101,13 @@ void gameplay(sf::RenderWindow& window, Personaje& alan, std::vector<Fruta*>& fr
         ///vERIFICAMOS LAS VIDAS
         if (vidas.getVidas() <= 0) {
         gameRunning = false;
+
+        //Guardar estadisticas
+        ArchivoEstadistica archivo;
+        archivo.setDatos(puntos.getNombre(), puntos.getPuntos());
+        archivo.grabarRegistroEstadistica();
+
+
             while (true) {
                 while (window.pollEvent(event)) {
                     if (event.type == sf::Event::Closed) {

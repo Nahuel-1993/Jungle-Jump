@@ -35,17 +35,18 @@ int main()
     menu.setMusic("Menu.wav");
 
           int op = 4;
+
     while (window.isOpen()){
-    while (op != 0 && window.isOpen()) {
+        while (op != 0 && window.isOpen()) {
         menu.handleInput(window, op);
         window.clear();
         menu.draw(window);
         window.display();
 
-        /*if (op=1){
-            menu.mostrarEstadistica(window, )
+        if (op==1){
+            menu.mostrarEstadistica(window);
             op= -1;
-        }*/
+        }
 
         if (op == 2){
             menu.mostrarCreditos(window);

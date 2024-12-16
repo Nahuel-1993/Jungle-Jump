@@ -3,6 +3,11 @@
 #include <fstream>
 #include <cstring>
 
+///CONSTRUCTOR
+ArchivoEstadistica::ArchivoEstadistica(){
+    nombre = nullptr;
+    puntaje = 0;
+}
 
 bool ArchivoEstadistica::grabarRegistroEstadistica(){
         FILE *pEstadistica; ///Puntero FILE que nos conecta con el archivo fisico
@@ -27,14 +32,22 @@ void ArchivoEstadistica::setDatos(const char* nombreJugador, int puntosJugador) 
 
 }
 
-std::string ArchivoEstadistica::leerRegistroEstadistica(){
-    FILE *pEstadistica;
-    pEstadistica=fopen("estadistica.dat", "rb");
-    if(pEstadistica==NULL) return "false";
+std::string ArchivoEstadistica::leerRegistroEstadistica() {
+    FILE* pEstadistica = fopen("estadistica.dat", "rb");
+    if (pEstadistica == NULL) return "false";
+
+    std::string estadisticas;
+
+    ArchivoEstadistica registro;
+    while (fread(&registro, sizeof(ArchivoEstadistica), 1, pEstadistica) == 1) {
+        estadisticas += "Nombre: " + std::string(registro.nombre) + "\n";
+        estadisticas += "Puntos: " + std::to_string(registro.puntaje) + "\n\n";
+    }
 
     fclose(pEstadistica);
-    return " ";
+    return estadisticas;
 }
+
 
 
 ///DESTRUCTOR
